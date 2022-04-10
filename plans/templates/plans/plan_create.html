@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+  <h1>엥ㄴ아ㅣㄴ아러</h1>
+  <form action="{% url 'plans:plan_create' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">제출</button>
+  </form>
 {% endblock content %}
