@@ -1,5 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
+  <div class='d-flex justify-content-between'>
+    <h1>서울 3반 약속 번개 잡기</h1>
+    <a href="{% url 'plans:plan_create' %}">
+      <button type="button" class="btn btn-info text-light">
+        약속 생성
+      </button>
+    </a>
+  </div>
+  
+  <div class='my-3'>
+    <p>&#128521; 현재 당신을 기다리고 있는 약속들</p>
+  </div>
 
 {% endblock content %}
