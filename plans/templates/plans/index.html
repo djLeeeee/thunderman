@@ -2,16 +2,23 @@
 
 {% block content %}
   <div class='d-flex justify-content-between'>
-    <h1>서울 3반 약속 번개 잡기</h1>
+    <h1 class="fw-bold">서울 3반 약속 번개 잡기</h1>
     <a href="{% url 'plans:plan_create' %}">
       <button type="button" class="btn btn-info text-light">
         약속 생성
       </button>
     </a>
   </div>
-  
-  <div class='my-3'>
-    <p>&#128521; 현재 당신을 기다리고 있는 약속들</p>
+  <div class="my-3 text-center">
+    <h3 class="fw-bold">&#128521; 현재 당신을 기다리고 있는 약속들 &#128521;</h3>
   </div>
-
+  <div class="container">
+    {% for date in dates %}
+    <div class="alert alert-info offset-2 col-8 round" role="alert">
+      <a href="#" class="text-decoration-none text-center text-black">
+        <h1 class="my-3">{{ date }}</h1>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
 {% endblock content %}
