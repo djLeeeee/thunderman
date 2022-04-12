@@ -1,16 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,500&display=swap');
 
 h1 {
-  color: #376BAE;
+  color: #2159B0;
   font-family: 'Jua', sans-serif;
+}
+
+
+label {
+  color: black;
 }
 
 input {
   border: 0;
-  border-bottom: 1px solid #376BAE;
+  border-bottom: 2px solid #2159B0;
+}
+
+input::placeholder {
+  color: gray;
+  opacity: 0.8;
 }
 
 textarea {
-  border: 1;
-  border-bottom: 1px solid #376BAE;
+  border: 2px solid #2159B0;
+}
+
+textarea::placeholder {
+  color: gray;
+  opacity: 0.8;
+}
+
+button {
+  background-color: #F7E85F !important;
 }
