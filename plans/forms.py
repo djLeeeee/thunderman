@@ -42,7 +42,6 @@ class PlanForm(forms.ModelForm):
             attrs={
                 'placeholder': '몇 명?',
                 'min': 0,
-                'max': 10,
                 'class': box_class,
             }
         )
