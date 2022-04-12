@@ -12,7 +12,9 @@ def index(request):
     enddate = startdate + timedelta(days=interval)
 
     #
-    dates = Plan.objects.all().filter(date__range=[startdate, enddate]).values_list('date', flat=True).distinct().order_by('date')
+    print(Plan.objects.filter(date__range=[startdate, enddate]).values_list('date', flat=True))
+    dates = Plan.objects.filter(date__range=[startdate, enddate]).values_list('date', flat=True).distinct().order_by('date')
+
     context = {
         "dates": dates,
     }

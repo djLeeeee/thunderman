@@ -1,0 +1,19 @@
+h1 {
+  color: #2159B0;
+}
+
+#date_box {
+  border-color: #2159B0;
+  border-width: 2.5px;
+  width: 280px;
+  border-radius: 20px; 
+}
+
+.date_font {
+  color: #2159B0;
+}
+
+#create_btn {
+  color: #2159B0;
+}
+
