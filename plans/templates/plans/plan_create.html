@@ -1,10 +1,27 @@
 {% extends 'base.html' %}
+{% load static %}
 
+{% block style %}
+<link rel="stylesheet" href="{% static 'plans/plan_create.css' %}">
+{% endblock style %}
 {% block content %}
-  <h1>엥ㄴ아ㅣㄴ아러</h1>
-  <form action="{% url 'plans:plan_create' %}" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-success">제출</button>
-  </form>
+  <div class='d-flex flex-column justify-content-evenly align-items-center'>
+    <h1 class='my-4'>약속을 잡아봅시다!</h1>
+    <form class='d-flex flex-column justify-content-evenly' action="{% url 'plans:plan_create' %}" method="POST">
+      {% csrf_token %}
+      <label for="id_title">모임의 이름을 적어주세요</label>
+      <p>{{ form.title }}</p>
+      <label for="id_date">만나는 날짜가 언제인가요?</label>
+      <p>{{ form.date }}</p>
+      <label for="id_time">몇 시에 만나나요?</label>
+      <p>{{ form.time }}</p>
+      <label for="id_people_limit">몇 명까지 만날 수 있나요?</label>
+      <p>{{ form.people_limit }}</p>
+      <label for="id_place">어디서 만나나요?</label>
+      <p>{{ form.place }}</p>
+      <label for="id_title">어떤 만남인가요?</label>
+      <p>{{ form.description }}</p>
+      <button type="submit" class="btn btn-success">제출</button>
+    </form>
+  </div>
 {% endblock content %}
