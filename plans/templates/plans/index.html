@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
+{% load static %}
 
+{% block style %}
+<link rel="stylesheet" href="{% static 'plans/index.css' %}">
+{% endblock style %}
 {% block content %}
-  <div class='d-flex justify-content-between'>
-    <h1 class="fw-bold">서울 3반 약속 번개 잡기</h1>
-    <a href="{% url 'plans:plan_create' %}">
-      <button type="button" class="btn btn-info text-light">
-        약속 생성
-      </button>
+  <div class='d-flex justify-content-around align-items-center'>
+    <h1>서울 3반 약속 번개 잡기</h1>
+    <a href="{% url 'plans:plan_create' %}" class="text-decoration-none">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16" id="create_btn">
+        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+      </svg>
     </a>
   </div>
   <div class="my-3 text-center">
@@ -14,11 +18,11 @@
   </div>
   <div class="container">
     {% for date in dates %}
-    <div class="alert alert-info offset-2 col-8 round" role="alert">
-      <a href="#" class="text-decoration-none text-center text-black">
-        <h1 class="my-3">{{ date }}</h1>
+      <a href="#" class="text-decoration-none text-center text-black d-flex justify-content-center">
+        <div class="alert col-8 round" role="alert" id="date_box">
+          <h2 class="date_font">{{ date }}</h2>
+        </div>
       </a>
-    </div>
     {% endfor %}
   </div>
 {% endblock content %}
