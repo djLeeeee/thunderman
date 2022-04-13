@@ -17,10 +17,10 @@
     <h3 class="fw-bold">&#128521; 현재 당신을 기다리고 있는 약속들 &#128521;</h3>
   </div>
   <div class="container">
-    {% for date in dates %}
+    {% for date, value in plan_cnt.items %}
       <a href="#" class="text-decoration-none text-center text-black d-flex justify-content-center">
         <div class="alert col-8 round" role="alert" id="date_box">
-          <h2 class="date_font">{{ date }}</h2>
+          <h2 class="date_font">{{ date }} {{ value }}</h2>
         </div>
       </a>
     {% endfor %}

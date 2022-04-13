@@ -22,6 +22,8 @@ class Plan(models.Model):
     # 약속 설명
     description = models.TextField()
 
+    # 약속 생성 시간
+    created_at = models.DateTimeField(auto_now_add=True) 
 
     def __str__(self) -> str:
         return super().__str__()

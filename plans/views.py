@@ -11,12 +11,17 @@ def index(request):
     interval = 30
     enddate = startdate + timedelta(days=interval)
 
-    #
-    print(Plan.objects.filter(date__range=[startdate, enddate]).values_list('date', flat=True))
-    dates = Plan.objects.filter(date__range=[startdate, enddate]).values_list('date', flat=True).distinct().order_by('date')
+    dates = Plan.objects.filter(date__range=[startdate, enddate]).values_list('date', flat=True).order_by('date')
+    plan_cnt = {}
+
+    for plandate in dates:
+        if plandate not in plan_cnt:
+            plan_cnt[plandate] = 1
+        else:
+            plan_cnt[plandate] += 1
 
     context = {
-        "dates": dates,
+        "plan_cnt": plan_cnt,
     }
     return render(request, 'plans/index.html', context)
 
