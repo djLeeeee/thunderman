@@ -7,7 +7,7 @@
 {% block content %}
   <div class='d-flex flex-column justify-content-evenly align-items-center'>
     <h1 class='my-4'>글 수정하기</h1>
-    <form class='d-flex flex-column justify-content-evenly' action="{% url 'plans:plan_update' %}" method="POST">
+    <form class='d-flex flex-column justify-content-evenly' action="{% url 'plans:plan_update' plan.pk %}" method="POST">
       {% csrf_token %}
       <label for="id_title">모임의 이름을 적어주세요</label>
       <p>{{ form.title }}</p>
