@@ -30,11 +30,16 @@ def index(request):
     return render(request, 'plans/index.html', context)
 
 
-def plan_date(request):
-    return render(request, 'plans/plan_date.html')
+def plan_date(request, month, day):
+    plandate = date(2022, month, day)
+    plans = Plan.objects.filter(date=plandate)
+    context = {
+        "plans": plans
+    }
+    return render(request, 'plans/plan_date.html', context)
 
 
-def plan_detail(request):
+def plan_detail(request, pk):
     return render(request, 'plans/plan_detail.html')
 
 # @login_required

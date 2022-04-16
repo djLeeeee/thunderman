@@ -18,7 +18,7 @@
   </div>
   <div class="container">
     {% for date, value in plan_cnt.items %}
-      <a href="#" class="text-decoration-none text-center text-black d-flex justify-content-center">
+      <a href="{% url 'plans:plan_date' date.month date.day %}" class="text-decoration-none text-center text-black d-flex justify-content-center">
         <div class="alert col-8 round" role="alert" id="date_box">
           <h2 class="date_font">{{ date }} {{ value }}</h2>
         </div>

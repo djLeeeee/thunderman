@@ -8,7 +8,7 @@ urlpatterns = [
     path('', views.index, name='index'),
 
     # 해당 날짜의 전체 약속 조회
-    path('<int:date>/', views.plan_date, name='plan_date'),
+    path('<int:month>/<int:day>/', views.plan_date, name='plan_date'),
 
     # 해당 약속 조회
     path('<int:pk>/detail/', views.plan_detail, name='plan_detail'),
