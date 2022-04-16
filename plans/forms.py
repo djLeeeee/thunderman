@@ -71,4 +71,4 @@ class PlanForm(forms.ModelForm):
 
     class Meta:
         model = Plan
-        fields = '__all__'
+        exclude = ('user',)
