@@ -40,7 +40,11 @@ def plan_date(request, month, day):
 
 
 def plan_detail(request, pk):
-    return render(request, 'plans/plan_detail.html')
+    plan = get_object_or_404(Plan, pk=pk)
+    context = {
+        'plan' : plan,
+    }
+    return render(request, 'plans/plan_detail.html', context)
 
 # @login_required
 @require_http_methods(['GET', 'POST'])
