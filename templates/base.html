@@ -18,10 +18,10 @@
   <div class='pure_navbar'>
     <div class='nav_bar_column'>
       {% if request.user.is_authenticated %}
-        안녕하세요 {{ user }}님
+        Hi, {{ user.first_name }}!
         <form action="{% url 'accounts:logout' %}" method="POST">
           {% csrf_token %}
-          <input type="submit" name="logout" id="logout" value="logout">
+          <input class='nav_button_anc' type="submit" name="logout" id="logout" value="logout">
         </form>
       {% else %}
         <div class='nav_button'>
