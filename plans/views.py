@@ -46,7 +46,8 @@ def plan_detail(request, pk):
     }
     return render(request, 'plans/plan_detail.html', context)
 
-# @login_required
+
+@login_required
 @require_http_methods(['GET', 'POST'])
 def plan_create(request):
     if request.method == "POST":
@@ -63,7 +64,8 @@ def plan_create(request):
     }
     return render(request, 'plans/plan_create.html', context)
 
-# @login_required
+
+@login_required
 @require_http_methods(['GET', 'POST'])
 def plan_update(request, pk):
     plan = get_object_or_404(Plan, pk=pk)
