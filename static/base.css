@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
+
+
+
+/* 페이지의 맨 위쪽 구획 전체를 의미 */
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+/* 걍 navbar라고 하면 썅놈의 부트스트랩 먹음 */
+.pure_navbar {
+  font-family: 'Press Start 2P', cursive;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  position: static;
+  margin-top: 30px;
+  height: 60px;
+  width: 1000PX;
+  background-color: #2159B0;
+  color: #DA6D49;
+}
+
+
+.nav_bar_column {
+  width: 33%;
+  align-items: center;
+  display: flex;
+}
+
+
+/* nav_bar를 3분할시켜서 왼쪽, 중앙, 오른쪽에 배치 */
+.nav_bar_column:nth-child(1) {
+  width: 33%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.nav_bar_column:nth-child(2) {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+}
+
+/* navbar 중간에 들어갈 제목? 우리 서비스 메인 로고? */
+.nav_bar_main_logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-family: 'Press Start 2P', cursive;
+  margin-top: 5px;
+}
+
+.nav_bar_column:nth-child(3) {
+  width: 33%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* nav bar의 로그인, 회원가입 버튼들  */
+.nav_button {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.nav_button_anc {
+  margin-top: 5px;
+  font-size: small;
+  text-decoration: none;
+  color: white;
+}
+
+.nav_button_anc:hover {
+  text-decoration: none;
+  color: yellow;
+}
