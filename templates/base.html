@@ -19,9 +19,13 @@
     <div class='nav_bar_column'>
       {% if request.user.is_authenticated %}
         안녕하세요 {{ user }}님
+        <form action="{% url 'accounts:logout' %}" method="POST">
+          {% csrf_token %}
+          <input type="submit" name="logout" id="logout" value="logout">
+        </form>
       {% else %}
         <div class='nav_button'>
-          <a class='nav_button_anc' href="#">Login</a>
+          <a class='nav_button_anc' href="{% url 'accounts:login' %}">Login</a>
         </div>
         <div class='nav_button'>
           <a class='nav_button_anc' href="{% url 'accounts:signup' %}">Sign up</a>
