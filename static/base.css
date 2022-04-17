@@ -17,7 +17,7 @@ nav {
 
 /* 걍 navbar라고 하면 썅놈의 부트스트랩 먹음 */
 .pure_navbar {
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Press Start 2P', 'DungGeunMo';
   display: flex;
   justify-content: center;
   border-radius: 5px;
@@ -41,6 +41,11 @@ nav {
   width: 33%;
   display: flex;
   justify-content: flex-start;
+}
+
+.nav_bar_form {
+  background-color: #2159B0;
+  border: 0px;
 }
 
 .nav_bar_column:nth-child(2) {
@@ -84,7 +89,8 @@ nav {
 
 /* nav bar의 로그인, 회원가입 버튼들  */
 .nav_button {
-  width: 100px;
+
+  min-width: 120px;
   display: flex;
   justify-content: center;
 }
