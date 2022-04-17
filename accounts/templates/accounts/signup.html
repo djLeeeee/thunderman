@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+  
+  <link rel="stylesheet" href="{% static 'accounts/signup.css' %}">
+
+{% endblock style %}
+
+{% block content %}
+  <div class='d-flex flex-column justify-content-evenly align-items-center'>
+  {% comment %} <div class='d-flex flex-column justify-content-evenly align-items-center'> {% endcomment %}
+    <form class='signup_form' action="{% url 'accounts:signup' %}" method="post">
+      <h1 class='my-4 main'>회원가입</h1>
+      {% csrf_token %}
+      <div>
+        <label for="id_username">아이디</label>
+      </div>
+      <p>
+        {{ form.username }}
+      </p>
+      <div>
+        <label for="id_password1">비밀번호</label>
+      </div>
+      <p>
+        {{ form.password1 }}
+      </p>
+      <div>
+        <label for="id_password2">비밀번호 확인</label>
+      </div>
+      <p>
+        {{ form.password2 }}
+      </p>
+      <div>
+        <label for="id_last_name">성</label>
+      </div>
+      <p>
+        {{ form.last_name }}
+      </p>
+      <div>
+        <label for="id_first_name">이름</label>
+      </div>
+      <p>
+        {{ form.first_name }}
+      </p>
+      <input class='input_button' type="submit" value="작성">
+    </form>
+    <a href="{% url 'plans:index' %}" class='btn'>뒤로가기</a>
+  </div>
+  {% comment %} </div> {% endcomment %}
+{% endblock content %}

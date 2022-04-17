@@ -28,12 +28,15 @@
         </div>
       {% endif %}
     </div>
-    
-    <div class='nav_bar_column'><span class='nav_bar_main_logo'> THUNDERMAN</span></div>
+    <div class='nav_bar_column'>
+      <a class='nav_bar_main_logo_anchor' href="{% url 'plans:index' %}">
+        <span class='nav_bar_main_logo'>THUNDERMAN</span>
+      </a>
+    </div>
     <div class='nav_bar_column'>
       <div class='nav_button'></div>
       <div class='nav_button'>
-        <a class='nav_button_anc' href="{% url 'plans:index' %}">Main</a>
+        <a class='nav_button_anc' href="#">Menu</a>
       </div>
     </div>
   </div>
