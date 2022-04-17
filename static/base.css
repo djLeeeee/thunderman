@@ -2,7 +2,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
 
-
+@font-face {
+  font-family: 'DungGeunMo';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
 /* 페이지의 맨 위쪽 구획 전체를 의미 */
 nav {
