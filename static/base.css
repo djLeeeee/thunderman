@@ -58,10 +58,18 @@ nav {
   color: #DA6D49;
 }
 
+/* hover와 active를 같이 쓸 때는 순서를  hover => active로 맞춰주어야 한다. */
 .nav_bar_main_logo_anchor:hover {
+  color: #DA6D49;
+}
+
+.nav_bar_main_logo_anchor:active {
   text-decoration: none;
   color: yellow;
 }
+
+
+
 
 .nav_bar_column:nth-child(3) {
   width: 33%;
@@ -85,6 +93,9 @@ nav {
 }
 
 .nav_button_anc:hover {
-  text-decoration: none;
   color: yellow;
+}
+
+.nav_button_anc:active {
+  color: #DA6D49;
 }
