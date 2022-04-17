@@ -56,7 +56,7 @@ def plan_create(request):
             plan = form.save(commit=False)
             plan.user = request.user
             plan.save()
-            return redirect("plans:index")
+            return redirect('plans:plan_detail', plan.pk)
     else:
         form = PlanForm()
     context = {
@@ -74,7 +74,7 @@ def plan_update(request, pk):
             form = PlanForm(request.POST, instance=plan)
             if form.is_valid():
                 plan = form.save()
-                return redirect('plans:index')
+                return redirect('plans:plan_detail', plan.pk)
         else:
             form = PlanForm(instance=plan)
     else:
