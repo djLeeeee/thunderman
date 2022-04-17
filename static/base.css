@@ -21,7 +21,6 @@ nav {
   height: 60px;
   width: 1000PX;
   background-color: #2159B0;
-  color: #DA6D49;
 }
 
 
@@ -51,7 +50,17 @@ nav {
   align-items: center;
   font-size: 1.5rem;
   font-family: 'Press Start 2P', cursive;
-  margin-top: 5px;
+  margin-top: 7px;
+}
+
+.nav_bar_main_logo_anchor {
+  text-decoration: none;
+  color: #DA6D49;
+}
+
+.nav_bar_main_logo_anchor:hover {
+  text-decoration: none;
+  color: yellow;
 }
 
 .nav_bar_column:nth-child(3) {
