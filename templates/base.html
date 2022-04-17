@@ -18,11 +18,15 @@
   <div class='pure_navbar'>
     <div class='nav_bar_column'>
       {% if request.user.is_authenticated %}
-        Hi, {{ user.first_name }}!
-        <form action="{% url 'accounts:logout' %}" method="POST">
+      <div class='nav_button'>
+        <span class='ms-4'>Hi,{{ user.first_name }}!</span> 
+      </div>
+      <div class='nav_button'>  
+        <form class='nav_bar_form' class=''  action="{% url 'accounts:logout' %}" method="POST">
           {% csrf_token %}
-          <input class='nav_button_anc' type="submit" name="logout" id="logout" value="logout">
+          <input class='nav_button_anc nav_bar_form' type="submit" name="logout" id="logout" value="Logout">
         </form>
+      </div>
       {% else %}
         <div class='nav_button'>
           <a class='nav_button_anc' href="{% url 'accounts:login' %}">Login</a>
