@@ -28,10 +28,13 @@ h1 {
   border-radius: 1rem;
   background-color: #DA6D49;
   border: 5px solid #DA6D49;
+  text-shadow: 2px 2px rgb(107, 61, 35);
+  box-shadow: 3px 3px rgb(107, 61, 35);
 }
 
 .badge_mini {
   left: 10px;
   background-color: #de1122;
   border: 5px solid #de1122;
+  box-shadow: 2px 2px rgb(107, 61, 35);
 }
