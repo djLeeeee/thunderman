@@ -10,8 +10,8 @@
 {% block content %}
   <div class='d-flex flex-column justify-content-evenly align-items-center'>
   {% comment %} <div class='d-flex flex-column justify-content-evenly align-items-center'> {% endcomment %}
+    <h1 class='my-4 main'>회원가입</h1>
     <form class='signup_form' action="{% url 'accounts:signup' %}" method="post">
-      <h1 class='my-4 main'>회원가입</h1>
       {% csrf_token %}
       <div>
         <label for="id_username">아이디</label>

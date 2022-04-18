@@ -8,16 +8,16 @@ label {
   color: black;
 }
 
-
 input {
   border: 0;
   border-bottom: 2px solid #2159B0;
+  background-color: white;
 }
 
 input:focus {
   outline: none;
-  border: 0;
   border-bottom: 2px solid #DA6D49;
+  background-color: white;
 }
 
 input::placeholder {
@@ -25,16 +25,7 @@ input::placeholder {
   opacity: 0.8;
 }
 
-textarea {
-  border: 2px solid #2159B0;
-}
-
-textarea::placeholder {
-  color: gray;
-  opacity: 0.8;
-}
-
-.submit_button {
+.input_button {
   width: 100%;
   color: #2159B0;
   border: solid;
@@ -42,6 +33,6 @@ textarea::placeholder {
   font-weight: bold;
 }
 
-.submit_button:active {
+.input_button:active {
   color: #DA6D49;
 }
