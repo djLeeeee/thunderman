@@ -17,3 +17,4 @@ sqlparse==0.4.2
 tomli==1.2.3
 typing_extensions==4.0.1
 urllib3==1.26.9
+fontawesomefree==6.1.1

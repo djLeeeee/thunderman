@@ -1,0 +1,29 @@
+input {
+  border: 0;
+  border-bottom: 2px solid #2159B0;
+}
+
+input:focus {
+  outline: none;
+  border: 0;
+  border-bottom: 2px solid #DA6D49;
+}
+
+input::placeholder {
+  color: gray;
+  opacity: 0.8;
+}
+
+#submit-btn {
+  background-color: #2159B0;
+  color: white;
+}
+
+textarea {
+  border: 2px solid #2159B0;
+}
+
+textarea::placeholder {
+  color: gray;
+  opacity: 0.8;
+}

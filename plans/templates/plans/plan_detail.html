@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
-{% comment %} {% load static %}
+{% load static %}
 
 {% block style %}
-<link rel="stylesheet" href="{% static 'plans/plan_create.css' %}">
-{% endblock style %} {% endcomment %}
+<link rel="stylesheet" href="{% static 'plans/plan_detail.css' %}">
+{% endblock style %}
 
 {% block content %}
 <p> 제목: {{ plan.title }} </p>
@@ -35,7 +35,7 @@
         <div class="modal-body">
           {% for user in plan.join_users.all %}
           <li>
-            {{ user.first_name }}
+            {{ user.last_name }}{{ user.first_name }}
           </li>
           {% endfor %}
         </div>
@@ -46,26 +46,25 @@
     </div>
   </div>
 <hr>
-  <h4>댓글 목록</h4>
-  <ul>
+  <h5 class='fw-bold'><i class="fa-solid fa-comments"></i> 댓글</h5>
     {% for comment in comments %}
-      <li>
-        {{ comment.user.first_name }} : {{ comment.content }}
+    <div class='d-flex justify-content align-items-center mx-2'>
+        <p class='fw-bold m-0'>{{ comment.user.first_name }} </p> <p class='m-0'>: {{ comment.content }}</p>
         {% if request.user == comment.user %}
           <form action="{% url 'plans:comment_delete' plan.pk comment.pk %}" method="POST">
             {% csrf_token %}
-            <input type="submit" value="삭제">
+            <button type="submit" class='btn py-0'><i class="fa-solid fa-xmark"></i></button>
           </form>
         {% endif %}
-      </li>
+    </div>
     {% endfor %}
-  </ul>
-  <hr>
   {% if request.user.is_authenticated %}
     <form action="{% url 'plans:comment_create' plan.pk %}" method="POST">
       {% csrf_token %}
-      {{ comment_form }}
-      <input type="submit">
+      {{ comment_form.content }}
+      <div class='d-flex justify-content-end'>
+        <button class='btn fw-bold' id='submit-btn' type="submit">작성</button>
+      </div>
     </form>
   {% else %}
     <a href="{% url 'accounts:login' %}">[댓글을 작성하려면 로그인하세요.]</a>
