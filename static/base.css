@@ -9,15 +9,17 @@
   font-style: normal;
 }
 
+* {
+  font-family: 'Press Start 2P', 'DungGeunMo';
+}
+
 /* 페이지의 맨 위쪽 구획 전체를 의미 */
 nav {
   display: flex;
   justify-content: center;
 }
 
-/* 걍 navbar라고 하면 썅놈의 부트스트랩 먹음 */
 .pure_navbar {
-  font-family: 'Press Start 2P', 'DungGeunMo';
   display: flex;
   justify-content: center;
   border-radius: 5px;
@@ -79,8 +81,6 @@ nav {
 }
 
 
-
-
 .nav_bar_column:nth-child(3) {
   width: 33%;
   display: flex;
@@ -88,8 +88,8 @@ nav {
 }
 
 /* nav bar의 로그인, 회원가입 버튼들  */
-.nav_button {
 
+.nav_button {
   min-width: 120px;
   display: flex;
   justify-content: center;
