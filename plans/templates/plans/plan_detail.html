@@ -14,42 +14,55 @@
   {% if request.user == plan.user %}
     <a href="{% url 'plans:plan_update' plan.pk %}">수정</a>
   {% endif %}
-  {% if request.user.is_authenticated %}
-    <form action="{% url 'plans:join_users' plan.pk %}" method='POST'>
-      {% csrf_token %}
-      {% if request.user in plan.join_users.all %}
-        <input type='submit' class='btn btn-danger' value='취소'>
-      {% else %}
-        <input type="submit" class='btn btn-success' value='참석'>
-      {% endif %}
-    </form>
-  {% endif %}
-  <button type="button" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal">{{ plan.join_users.all|length }}명</button>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">참석자</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            {% for user in plan.join_users.all %}
-            <li>
-              {{ user.last_name }}{{ user.first_name }}
-            </li>
-            {% endfor %}
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+
+  <form action="{% url 'plans:join_users' plan.pk %}" method='POST'>
+    {% csrf_token %}
+    {% if request.user in plan.join_users.all %}
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="btn-group">
+              {% if request.user.is_authenticated %}
+                <button type='submit' class='btn btn-danger'>취소</button>
+              {% endif %}
+              <button type="button" class="btn btn-success mx-1" data-bs-toggle="collapse" href="#collapsefriends" role="button" aria-expanded="false" aria-controls="collapseExample">{{ plan.join_users.all|length }}명</button>
+              <a class="btn" data-bs-toggle="collapse" href="#collapsecomments" role="button" aria-expanded="false" aria-controls="collapseExample" id="submit-btn">
+                <h6 id="btn-content"><i class="fa-solid fa-comments"></i> 댓글({{ plan.comment_set.all|length }})</h6>
+              </a>
+            </div>
           </div>
         </div>
       </div>
+    {% else %}
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="btn-group">
+              {% if request.user.is_authenticated %}
+                <button type="submit" class='btn btn-success'>참석</button>
+              {% endif %}
+              <button type="button" class="btn btn-success mx-1" data-bs-toggle="collapse" href="#collapsefriends" role="button" aria-expanded="false" aria-controls="collapseExample">{{ plan.join_users.all|length }}명</button>
+              <a class="btn" data-bs-toggle="collapse" href="#collapsecomments" role="button" aria-expanded="false" aria-controls="collapseExample" id="submit-btn">
+                <h6 id="btn-content"><i class="fa-solid fa-comments"></i> 댓글({{ plan.comment_set.all|length }})</h6>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>  
+    {% endif %}
+  </form>
+
+  <div class="collapse mt-3" id="collapsefriends">
+    <div class='d-flex justify-content align-items-center mx-2'>
+      <div class="d-flex wrap">
+        {% for user in plan.join_users.all %}
+          {{ user.last_name }}{{ user.first_name }}
+        {% endfor %}
+      </div>
     </div>
-  <hr>
-  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    <h5 class=''><i class="fa-solid fa-comments"></i> 댓글</h5>
-  </a>
-  <div class="collapse mt-3" id="collapseExample">
+  </div>
+
+  <div class="collapse mt-3" id="collapsecomments">
     {% for comment in comments %}
     <div class='d-flex justify-content align-items-center mx-2'>
         <p class='fw-bold m-0'>{{ comment.user.first_name }} </p> <p class='m-0'>: {{ comment.content }}</p>
