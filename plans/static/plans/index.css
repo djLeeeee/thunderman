@@ -6,14 +6,31 @@ h1 {
   border-color: #2159B0;
   border-width: 2.5px;
   width: 280px;
-  border-radius: 20px; 
+  border-radius: 20px;
 }
 
 .date_font {
-  color: #2159B0;
+  color: black;
 }
 
 #create_btn {
   color: #2159B0;
 }
 
+.badge {
+  top: -2px;
+  position: relative;
+  bottom: 10px;
+  color: white;
+  box-sizing: content-box;
+  padding: 0px;
+  border-radius: 1rem;
+  background-color: #DA6D49;
+  border: 5px solid #DA6D49;
+}
+
+.badge_mini {
+  left: 10px;
+  background-color: #de1122;
+  border: 5px solid #de1122;
+}
