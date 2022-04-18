@@ -18,4 +18,10 @@ urlpatterns = [
 
     # 약속 수정
     path('<int:pk>/update/', views.plan_update, name='plan_update'),
+
+    # 댓글 작성
+    path('<int:pk>/comments/', views.comment_create, name='comment_create'),
+
+    # 댓글 삭제
+    path('<int:plan_pk>/comments/<int:comment_pk>/delete/', views.comment_delete, name='comment_delete'),
 ]
