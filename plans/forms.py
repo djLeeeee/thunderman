@@ -71,7 +71,7 @@ class PlanForm(forms.ModelForm):
 
     class Meta:
         model = Plan
-        exclude = ('user',)
+        exclude = ('user', 'join_users',)
 
 
 class CommentForm(forms.ModelForm):

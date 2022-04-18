@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% comment %} {% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'plans/plan_create.css' %}">
+{% endblock style %} {% endcomment %}
 
 {% block content %}
 <p> 제목: {{ plan.title }} </p>
@@ -8,6 +13,37 @@
 <p> 내용: {{ plan.description }} </p>
 {% if request.user == plan.user %}
   <a href="{% url 'plans:plan_update' plan.pk %}" >수정</a>
+{% endif %}
+{% if request.user.is_authenticated %}
+  <form action="{% url 'plans:join_users' plan.pk %}" method='POST'>
+    {% csrf_token %}
+    {% if request.user in plan.join_users.all %}
+      <input type='submit' class='btn' value='불참'>
+    {% else %}
+      <input type="submit" class='btn' value='참석'>
+    {% endif %}
+  </form>
+  <button type="button" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal">{{ plan.join_users.all|length }}명</button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">참석자</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          {% for user in plan.join_users.all %}
+          <li>
+            {{ user.first_name }}
+          </li>
+          {% endfor %}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endif %}
 <hr>
   <h4>댓글 목록</h4>
