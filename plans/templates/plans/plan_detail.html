@@ -23,7 +23,8 @@
       <input type="submit" class='btn' value='참석'>
     {% endif %}
   </form>
-  <button type="button" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal">{{ plan.join_users.all|length }}명</button>
+{% endif %}
+<button type="button" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal">{{ plan.join_users.all|length }}명</button>
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -44,7 +45,6 @@
       </div>
     </div>
   </div>
-{% endif %}
 <hr>
   <h4>댓글 목록</h4>
   <ul>
