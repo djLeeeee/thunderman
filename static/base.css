@@ -68,6 +68,7 @@ nav {
 .nav_bar_main_logo_anchor {
   text-decoration: none;
   color: #DA6D49;
+  text-shadow: 3px 3px rgb(107, 61, 35);
 }
 
 /* hover와 active를 같이 쓸 때는 순서를  hover => active로 맞춰주어야 한다. */
@@ -101,6 +102,7 @@ nav {
   font-size: small;
   text-decoration: none;
   color: white;
+  text-shadow: 2px 2px rgb(136, 136, 136);
 }
 
 .nav_button_anc:hover {
@@ -109,4 +111,9 @@ nav {
 
 .nav_button_anc:active {
   color: #DA6D49;
+}
+
+.user_name_text {
+  color: #DA6D49;
+  text-shadow: 2px 2px rgb(107, 61, 35);
 }
