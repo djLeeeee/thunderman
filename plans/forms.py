@@ -75,6 +75,18 @@ class PlanForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
+    large_box_class = 'w-100 my-2'
+    
+    content = forms.CharField(
+        widget= forms.Textarea(
+            attrs={
+                'placeholder': '댓글을 작성해주세요',
+                'cols': 10,
+                'rows': 4,
+                'class': large_box_class,
+            }
+        )       
+    )
 
     class Meta:
         model = Comment
