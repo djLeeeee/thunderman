@@ -117,3 +117,7 @@ nav {
   color: #DA6D49;
   text-shadow: 2px 2px rgb(107, 61, 35);
 }
+
+#content {
+  width: 950PX;  
+}
