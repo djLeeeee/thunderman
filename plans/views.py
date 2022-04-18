@@ -111,3 +111,15 @@ def comment_delete(request, plan_pk ,comment_pk):
         if request.user == comment.user:
             comment.delete()
     return redirect('plans:plan_detail', plan_pk)
+
+
+@require_POST
+def join_users(request, plan_pk):
+    if request.user.is_authenticated:
+        plan = get_object_or_404(Plan, pk=plan_pk)
+        if plan.join_users.filter(pk=request.user.pk).exists():
+            plan.join_users.remove(request.user)
+        else:
+            plan.join_users.add(request.user)
+        return redirect('plans:plan_detail', plan_pk)
+    return redirect('accounts:login')

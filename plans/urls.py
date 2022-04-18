@@ -24,4 +24,7 @@ urlpatterns = [
 
     # 댓글 삭제
     path('<int:plan_pk>/comments/<int:comment_pk>/delete/', views.comment_delete, name='comment_delete'),
+
+    # 참가(좋아요) 버튼
+    path('<int:plan_pk>/join_users/', views.join_users, name='join_users'),
 ]

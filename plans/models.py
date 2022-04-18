@@ -27,7 +27,10 @@ class Plan(models.Model):
     description = models.TextField()
 
     # 약속 생성 시간
-    created_at = models.DateTimeField(auto_now_add=True) 
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    # 참가 명단
+    join_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='join_plans')
 
     def __str__(self) -> str:
         return super().__str__()
