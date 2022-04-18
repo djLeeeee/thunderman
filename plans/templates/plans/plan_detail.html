@@ -9,5 +9,30 @@
 {% if request.user == plan.user %}
   <a href="{% url 'plans:plan_update' plan.pk %}" >수정</a>
 {% endif %}
+<hr>
+  <h4>댓글 목록</h4>
+  <ul>
+    {% for comment in comments %}
+      <li>
+        {{ comment.user.first_name }} : {{ comment.content }}
+        {% if request.user == comment.user %}
+          <form action="{% url 'plans:comment_delete' plan.pk comment.pk %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="삭제">
+          </form>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  <hr>
+  {% if request.user.is_authenticated %}
+    <form action="{% url 'plans:comment_create' plan.pk %}" method="POST">
+      {% csrf_token %}
+      {{ comment_form }}
+      <input type="submit">
+    </form>
+  {% else %}
+    <a href="{% url 'accounts:login' %}">[댓글을 작성하려면 로그인하세요.]</a>
+  {% endif %}
 <a href="{% url 'plans:plan_date' plan.date.month plan.date.day %}"> 뒤로가기 </a>
 {% endblock content %}

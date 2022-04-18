@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_http_methods, require_POST, require_safe
-from .models import Plan
-from .forms import PlanForm
+from .models import Plan, Comment
+from .forms import PlanForm, CommentForm
 from datetime import date, timedelta
 
 # Create your views here.
@@ -41,8 +41,12 @@ def plan_date(request, month, day):
 
 def plan_detail(request, pk):
     plan = get_object_or_404(Plan, pk=pk)
+    comment_form = CommentForm()
+    comments = plan.comment_set.all()
     context = {
         'plan' : plan,
+        'comment_form': comment_form,
+        'comments': comments,
     }
     return render(request, 'plans/plan_detail.html', context)
 
@@ -84,3 +88,26 @@ def plan_update(request, pk):
         'form': form,
     }
     return render(request, 'plans/plan_update.html', context)
+
+
+@require_POST
+def comment_create(request, pk):
+    if request.user.is_authenticated:
+        plan = get_object_or_404(Plan, pk=pk)
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.plan = plan
+            comment.user = request.user
+            comment.save()
+        return redirect('plans:plan_detail', plan.pk)
+    return redirect('accounts:login')
+
+
+@require_POST
+def comment_delete(request, plan_pk ,comment_pk):
+    if request.user.is_authenticated:
+        comment = get_object_or_404(Comment, pk=comment_pk)
+        if request.user == comment.user:
+            comment.delete()
+    return redirect('plans:plan_detail', plan_pk)
