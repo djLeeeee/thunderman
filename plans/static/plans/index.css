@@ -11,6 +11,7 @@ h1 {
 
 .date_font {
   color: black;
+  text-shadow: 2px 2px rgb(107, 61, 35)
 }
 
 #create_btn {
