@@ -19,10 +19,16 @@
       <div class='badge'>
         <a class='text-decoration-none text-white' href="{% url 'plans:plan_date' date.month date.day %}">
           <h5 class='my-1 mx-1'>{{ value }}개</h5>
-        <span class="d-flex align-items-center position-absolute top-0 start-100 translate-middle badge rounded-pill badge_mini">
-          New
-        </span>
-        </a>
+          {% for key, new in plan_new.items %}
+            {% if key == date %}
+              {% if new %}
+                <span class="d-flex align-items-center position-absolute top-0 start-100 translate-middle badge rounded-pill badge_mini">
+                  New
+                </span>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+      </a>
       </div>
       <hr>
     </div>

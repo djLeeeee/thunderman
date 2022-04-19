@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_http_methods, require_POST, require_safe
 from .models import Plan, Comment
 from .forms import PlanForm, CommentForm
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 
 # Create your views here.
 
@@ -17,15 +17,27 @@ def index(request):
 
     dates = Plan.objects.filter(date__range=[startdate, enddate]).values_list('date', flat=True).order_by('date')
     plan_cnt = {}
-
+    
     for plandate in dates:
         if plandate not in plan_cnt:
             plan_cnt[plandate] = 1
         else:
             plan_cnt[plandate] += 1
 
+    endtime = datetime.now()
+    starttime = endtime - timedelta(hours=24)
+    plan_new = {}
+    for plandate in dates:
+        plandate_plans = Plan.objects.filter(date=plandate, created_at__range=[starttime, endtime])
+        if plandate_plans:
+            plan_new[plandate] = 1
+        else:
+            plan_new[plandate] = 0
+    print(starttime, endtime)
+    print(plan_new)
     context = {
         "plan_cnt": plan_cnt,
+        "plan_new": plan_new,
     }
     return render(request, 'plans/index.html', context)
 
