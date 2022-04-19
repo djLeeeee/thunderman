@@ -12,15 +12,15 @@
     <h3 class="fw-bold"><img style='top: 3px; width: 40px; height:40px;' src="{% static 'plans/sunglass.png' %}" alt="선글라스"> 현재 당신을 기다리고 있는 약속들 <img style='top: 3px; width: 40px; height:40px;' src="{% static 'plans/sunglass.png' %}" alt="선글라스"></h3>
   </div>
   <div class="container">
-    {% for date, value in plan_cnt.items %}
+    {% for plan in plan_cnt %}
     <div class='d-flex justify-content-center my-3 align-items-center'>
       <h2 class='my-3 mx-3 '>
-        <a class='text-decoration-none date_font' href="{% url 'plans:plan_date' date.month date.day %}">{{ date }}</a>
+        <a class='text-decoration-none date_font' href="{% url 'plans:plan_date' plan.date.month plan.date.day %}">{{ plan.date }}</a>
       </h2> 
       <div class='badge'>
-        <a class='text-decoration-none text-white' href="{% url 'plans:plan_date' date.month date.day %}">
-          <h5 class='my-1 mx-1'>{{ value }}개</h5>
-          {% if  date in plan_new %}
+        <a class='text-decoration-none text-white' href="{% url 'plans:plan_date' plan.date.month plan.date.day %}">
+          <h5 class='my-1 mx-1'>{{ plan.total }}개</h5>
+          {% if plan.date in plan_new %}
             <span class="d-flex align-items-center position-absolute top-0 start-100 translate-middle badge rounded-pill badge_mini">
               New
             </span>

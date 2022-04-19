@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_http_methods, require_POST, require_safe
+from django.db.models import Count
 from .models import Plan, Comment
 from .forms import PlanForm, CommentForm
 from datetime import date, datetime, timedelta
@@ -15,22 +16,12 @@ def index(request):
     interval = 30
     enddate = startdate + timedelta(days=interval)
 
-    dates = Plan.objects.filter(date__range=[startdate, enddate]).values_list('date', flat=True).order_by('date')
-    plan_cnt = {}
-    
-    for plandate in dates:
-        if plandate not in plan_cnt:
-            plan_cnt[plandate] = 1
-        else:
-            plan_cnt[plandate] += 1
+    plan_cnt = Plan.objects.filter(date__range=[startdate, enddate]).values('date').annotate(total=Count('date')).order_by('date')
 
     endtime = datetime.now()
     starttime = endtime - timedelta(hours=24)
-    plan_new = []
-    for plandate in dates:
-        if Plan.objects.filter(date=plandate, created_at__range=[starttime, endtime]).exists():
-        # plandate_new = plandate_plans.filter(created_at__range=[starttime, endtime])
-            plan_new.append(plandate)
+
+    plan_new = Plan.objects.filter(created_at__range=[starttime, endtime]).values_list('date', flat=True)
 
     context = {
         "plan_cnt": plan_cnt,
