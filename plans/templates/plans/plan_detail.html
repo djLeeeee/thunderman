@@ -18,36 +18,24 @@
   <form action="{% url 'plans:join_users' plan.pk %}" method='POST'>
     {% csrf_token %}
     {% if request.user in plan.join_users.all %}
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="btn-group">
-              {% if request.user.is_authenticated %}
-                <button type='submit' class='btn btn-danger'>취소</button>
-              {% endif %}
-              <button type="button" class="btn btn-success mx-1" data-bs-toggle="collapse" href="#collapsefriends" role="button" aria-expanded="false" aria-controls="collapseExample">{{ plan.join_users.all|length }}명</button>
-              <a class="btn" data-bs-toggle="collapse" href="#collapsecomments" role="button" aria-expanded="false" aria-controls="collapseExample" id="submit-btn">
-                <h6 id="btn-content"><i class="fa-solid fa-comments"></i> 댓글({{ plan.comment_set.all|length }})</h6>
-              </a>
-            </div>
-          </div>
-        </div>
+      <div class="btn-group">
+        {% if request.user.is_authenticated %}
+          <button type='submit' class='btn btn-danger'>취소</button>
+        {% endif %}
+        <button type="button" class="btn btn-success mx-1" data-bs-toggle="collapse" href="#collapsefriends" role="button" aria-expanded="false" aria-controls="collapseExample">{{ plan.join_users.all|length }}명</button>
+        <a class="btn" data-bs-toggle="collapse" href="#collapsecomments" role="button" aria-expanded="false" aria-controls="collapseExample" id="submit-btn">
+          <h6 id="btn-content"><i class="fa-solid fa-comments"></i> 댓글({{ plan.comment_set.all|length }})</h6>
+        </a>
       </div>
     {% else %}
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="btn-group">
-              {% if request.user.is_authenticated %}
-                <button type="submit" class='btn btn-success'>참석</button>
-              {% endif %}
-              <button type="button" class="btn btn-success mx-1" data-bs-toggle="collapse" href="#collapsefriends" role="button" aria-expanded="false" aria-controls="collapseExample">{{ plan.join_users.all|length }}명</button>
-              <a class="btn" data-bs-toggle="collapse" href="#collapsecomments" role="button" aria-expanded="false" aria-controls="collapseExample" id="submit-btn">
-                <h6 id="btn-content"><i class="fa-solid fa-comments"></i> 댓글({{ plan.comment_set.all|length }})</h6>
-              </a>
-            </div>
-          </div>
-        </div>
+      <div class="btn-group">
+        {% if request.user.is_authenticated %}
+          <button type="submit" class='btn btn-success'>참석</button>
+        {% endif %}
+        <button type="button" class="btn btn-success mx-1" data-bs-toggle="collapse" href="#collapsefriends" role="button" aria-expanded="false" aria-controls="collapseExample">{{ plan.join_users.all|length }}명</button>
+        <a class="btn" data-bs-toggle="collapse" href="#collapsecomments" role="button" aria-expanded="false" aria-controls="collapseExample" id="submit-btn">
+          <h6 id="btn-content"><i class="fa-solid fa-comments"></i> 댓글({{ plan.comment_set.all|length }})</h6>
+        </a>
       </div>  
     {% endif %}
   </form>
