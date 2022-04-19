@@ -3,13 +3,12 @@
 
 {% block style %}
   
-  <link rel="stylesheet" href="{% static 'accounts/signup.css' %}">
+  <link rel="stylesheet" href="{% static 'accounts/signup.css' %}?after">
 
 {% endblock style %}
 
 {% block content %}
   <div class='d-flex flex-column justify-content-evenly align-items-center'>
-  {% comment %} <div class='d-flex flex-column justify-content-evenly align-items-center'> {% endcomment %}
     <h1 class='my-4 main'>회원가입</h1>
     <form class='signup_form' action="{% url 'accounts:signup' %}" method="post">
       {% csrf_token %}

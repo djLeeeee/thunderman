@@ -13,11 +13,20 @@
   font-family: 'Press Start 2P', 'DungGeunMo';
 }
 
+h1 {
+  font-family: 'Press Start 2P', 'DungGeunMo';
+}
+
 /* 페이지의 맨 위쪽 구획 전체를 의미 */
 nav {
   display: flex;
   justify-content: center;
 }
+
+a {
+  text-decoration: none;
+}
+
 
 .pure_navbar {
   display: flex;
@@ -30,6 +39,16 @@ nav {
   background-color: #2159B0;
 }
 
+/* .base_background {
+  top: 30px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 1000px;
+  min-height: 90vh;
+  background-color: rgb(107, 61, 35);
+  text-shadow: 3px 3px rgb(107, 61, 35);
+
+} */
 
 .nav_bar_column {
   width: 33%;
@@ -119,5 +138,5 @@ nav {
 }
 
 #content {
-  width: 950PX;  
+  width: 950PX;
 }
