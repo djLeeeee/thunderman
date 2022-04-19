@@ -1,3 +1,4 @@
+from distutils.log import error
 from django.shortcuts import get_object_or_404, render, redirect
 from .forms import CustomUserCreationForm
 from django.views.decorators.http import require_http_methods, require_POST
@@ -10,21 +11,45 @@ from datetime import date
 
 @require_http_methods(["POST", "GET"])
 def signup(request):
-    error_dict = {}
+    errors = []
     if request.user.is_authenticated:
         return redirect("plans:index")
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
-        # print(form)
         if form.is_valid():
             user = form.save()
             auth_login(request, user)
             return redirect("plans:index")
+        else:
+            username = request.POST.get('username')
+            password1 = request.POST.get('password1')
+            password2 = request.POST.get('password2')
+            flag = False
+            if get_user_model().objects.filter(username=username).exists():
+                errors.append('중복된 아이디가 있습니다')
+                flag = True
+            elif password1 != password2:
+                errors.append('비밀번호 확인이 틀렸습니다')
+                flag = True
+            elif len(password1) < 8:
+                errors.append('8자 이상의 비밀번호를 입력해주세요')
+                flag = True 
+            else:
+                try:
+                    _= int(password1) 
+                    errors.append('숫자와 문자를 함께 입력해주세요')
+                    flag = True
+                except ValueError:
+                    pass
+            if not flag:
+                errors.append('특수기호는 @ . + - - 만 가능합니다')  
+            
+                
     else:
         form = CustomUserCreationForm()
     context = {
         "form": form,
-        'error_dict': error_dict,
+        "errors": errors,
     }
     return render(request, "accounts/signup.html", context)
 
