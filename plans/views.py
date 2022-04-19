@@ -28,8 +28,8 @@ def index(request):
     starttime = endtime - timedelta(hours=24)
     plan_new = []
     for plandate in dates:
-        plandate_plans = Plan.objects.filter(date=plandate, created_at__range=[starttime, endtime])
-        if plandate_plans:
+        if Plan.objects.filter(date=plandate, created_at__range=[starttime, endtime]).exists():
+        # plandate_new = plandate_plans.filter(created_at__range=[starttime, endtime])
             plan_new.append(plandate)
 
     context = {
