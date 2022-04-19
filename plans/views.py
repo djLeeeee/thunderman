@@ -26,15 +26,12 @@ def index(request):
 
     endtime = datetime.now()
     starttime = endtime - timedelta(hours=24)
-    plan_new = {}
+    plan_new = []
     for plandate in dates:
         plandate_plans = Plan.objects.filter(date=plandate, created_at__range=[starttime, endtime])
         if plandate_plans:
-            plan_new[plandate] = 1
-        else:
-            plan_new[plandate] = 0
-    print(starttime, endtime)
-    print(plan_new)
+            plan_new.append(plandate)
+
     context = {
         "plan_cnt": plan_cnt,
         "plan_new": plan_new,
