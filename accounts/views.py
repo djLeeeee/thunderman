@@ -1,9 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .forms import CustomUserCreationForm
 from django.views.decorators.http import require_http_methods, require_POST
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import get_user_model
+from datetime import date
 
 
 @require_http_methods(["POST", "GET"])
@@ -49,3 +51,17 @@ def logout(request):
     if request.user.is_authenticated:
         auth_logout(request)
     return redirect('plans:index')
+
+
+def my_page(request, username):
+    User = get_user_model()
+    person = get_object_or_404(User, username=username)
+    today = date.today()
+    coming_plans = person.join_plans.filter(date__gte=today)
+    passed_plans = person.join_plans.filter(date__lt=today)
+    context = {
+        'person': person,
+        'coming_plans': coming_plans,
+        'passed_plans': passed_plans,
+    }
+    return render(request, 'accounts/my_page.html', context)

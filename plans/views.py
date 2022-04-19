@@ -123,3 +123,11 @@ def join_users(request, plan_pk):
             plan.join_users.add(request.user)
         return redirect('plans:plan_detail', plan_pk)
     return redirect('accounts:login')
+
+@require_POST
+def plan_delete(request, pk):
+    plan = get_object_or_404(Plan, pk=pk)
+    if request.user.is_authenticated:
+        if request.user == plan.user:
+            plan.delete()
+    return redirect('plans:index')

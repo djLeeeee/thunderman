@@ -13,6 +13,10 @@
   <p> 내용: {{ plan.description }} </p>
   {% if request.user == plan.user %}
     <a href="{% url 'plans:plan_update' plan.pk %}">수정</a>
+    <form action="{% url 'plans:plan_delete' plan.pk %}" method="POST">
+      {% csrf_token %}
+      <button>삭제</button>
+    </form>
   {% endif %}
 
   <form action="{% url 'plans:join_users' plan.pk %}" method='POST'>
