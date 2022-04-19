@@ -19,22 +19,15 @@
       <div class='badge'>
         <a class='text-decoration-none text-white' href="{% url 'plans:plan_date' date.month date.day %}">
           <h5 class='my-1 mx-1'>{{ value }}개</h5>
-        <span class="d-flex align-items-center position-absolute top-0 start-100 translate-middle badge rounded-pill badge_mini">
-          New
-        </span>
-        </a>
+          {% if  date in plan_new %}
+            <span class="d-flex align-items-center position-absolute top-0 start-100 translate-middle badge rounded-pill badge_mini">
+              New
+            </span>
+          {% endif %}
+        </a>   
       </div>
-      <hr>
     </div>
-
-
-    {% comment %} <div class="alert col-8 round" role="alert" id="date_box">
-      <a href="{% url 'plans:plan_date' date.month date.day %}" class="text-decoration-none text-center text-black d-flex justify-content-center">
-      </a>
-    </div> {% endcomment %}
-    
-      {% comment %} <h2 class="date_font">{{ date }} {{ value }}</h2> {% endcomment %}
-    {% endfor %}
+    {% endfor %}  
   </div>
 {% endblock content %}
 
