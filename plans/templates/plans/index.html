@@ -8,7 +8,8 @@
   <div class='d-flex justify-content-around align-items-center'>
   </div>
   <div class="my-3 text-center">
-    <h3 class="fw-bold">&#128521; 현재 당신을 기다리고 있는 약속들 &#128521;</h3>
+    {% comment %} <h3 class="fw-bold">&#128521; 현재 당신을 기다리고 있는 약속들 &#128521;</h3> {% endcomment %}
+    <h3 class="fw-bold"><img style='top: 3px; width: 40px; height:40px;' src="{% static 'plans/sunglass.png' %}" alt="선글라스"> 현재 당신을 기다리고 있는 약속들 <img style='top: 3px; width: 40px; height:40px;' src="{% static 'plans/sunglass.png' %}" alt="선글라스"></h3>
   </div>
   <div class="container">
     {% for date, value in plan_cnt.items %}

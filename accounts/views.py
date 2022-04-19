@@ -8,19 +8,21 @@ from django.contrib.auth.forms import AuthenticationForm
 
 @require_http_methods(["POST", "GET"])
 def signup(request):
+    error_dict = {}
     if request.user.is_authenticated:
         return redirect("plans:index")
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
+        # print(form)
         if form.is_valid():
             user = form.save()
-            # 나중에 login 기능 구현하고 나서, 붙이면 된다.
             auth_login(request, user)
             return redirect("plans:index")
     else:
         form = CustomUserCreationForm()
     context = {
         "form": form,
+        'error_dict': error_dict,
     }
     return render(request, "accounts/signup.html", context)
 
@@ -29,7 +31,6 @@ def signup(request):
 def login(request):
     if request.user.is_authenticated:
         return redirect('plans:index')
-
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
         if form.is_valid():

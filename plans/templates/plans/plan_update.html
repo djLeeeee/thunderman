@@ -21,7 +21,8 @@
       <p>{{ form.place }}</p>
       <label for="id_title">어떤 만남인가요?</label>
       <p>{{ form.description }}</p>
-      <button type="submit" class="btn">제출</button>
+      <button type="submit" class="submit_button">제출</button>
     </form>
+    <a href="{% url 'plans:plan_detail' plan.pk %}">뒤로가기</a>
   </div>
 {% endblock content %}
