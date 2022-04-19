@@ -46,7 +46,7 @@
     <div class='nav_bar_column'>
       <div class='nav_button'>
         {% if request.user.is_authenticated %}
-          <a class='nav_button_anc' href="#">My Page</a>
+          <a class='nav_button_anc' href="{% url 'accounts:my_page' user.username %}">My Page</a>
         {% endif %}
       </div>
       <div class='nav_button'>

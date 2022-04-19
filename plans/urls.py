@@ -16,6 +16,9 @@ urlpatterns = [
     # 약속 추가
     path('create/', views.plan_create, name='plan_create'),
 
+    # 약속 삭제
+    path('<int:pk>/delete/', views.plan_delete, name='plan_delete'),
+
     # 약속 수정
     path('<int:pk>/update/', views.plan_update, name='plan_update'),
 
