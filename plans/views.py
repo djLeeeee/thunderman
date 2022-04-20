@@ -17,17 +17,12 @@ def index(request):
     enddate = startdate + timedelta(days=interval)
 
     plan_cnt = Plan.objects.filter(date__range=[startdate, enddate]).values('date').annotate(total=Count('date')).order_by('date')
-    week_dic = {0: '월', 1: '화', 2: '수', 3: '목', 4: '금', 5: '토', 6: '일'}
     endtime = datetime.now()
     starttime = endtime - timedelta(hours=24)
-
-
     plan_new = Plan.objects.filter(created_at__range=[starttime, endtime]).values_list('date', flat=True)
-
     context = {
         "plan_cnt": plan_cnt,
         "plan_new": plan_new,
-        "week_dic": week_dic,
     }
     return render(request, 'plans/index.html', context)
 
