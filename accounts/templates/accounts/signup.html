@@ -42,13 +42,14 @@
       </div>
       <p>
         {{ form.first_name }}
+      {% for error in errors %}
+        <p style='color: rgb(209, 51, 0);'><img style='width:30px; height:30px;' src="{% static 'accounts/my_image.png' %}" alt="사진사진">{{ error }}</p>
+      {% endfor %}
       </p>
       <input class='input_button' type="submit" value="작성">
     </form>
     <a href="{% url 'plans:index' %}" class='btn'>뒤로가기</a>
   </div>
-  {% for error in errors %}
-    <p>{{ error }}</p>
-  {% endfor %}
+ 
   {% comment %} </div> {% endcomment %}
 {% endblock content %}
