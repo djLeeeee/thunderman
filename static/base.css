@@ -9,8 +9,50 @@
   font-style: normal;
 }
 
+input {
+  background: transparent;
+}
+
 * {
   font-family: 'Press Start 2P', 'DungGeunMo';
+}
+
+body {
+  min-height: 90vh;
+  background-color: #F0E9DE;
+}
+
+.base_main {
+  position: relative;
+  min-height: 90vh;
+  width: 980PX;
+  border: none;
+  top: 50px;
+  border-radius: 40px;
+  /* background-color: #eb79bbdb;
+  box-shadow:
+    1px 1px #e85aaddb,
+    2px 2px #e85aaddb,
+    3px 3px #e85aaddb,
+    4px 4px #e85aaddb,
+    5px 5px #e85aaddb,
+    6px 6px #e85aaddb,
+    7px 7px #e85aaddb,
+    8px 8px #e85aaddb,
+    9px 9px #e85aaddb,
+    10px 10px #e85aaddb; */
+  background-color: rgb(242, 242, 242);
+  box-shadow:
+    1px 1px rgb(232, 232, 232),
+    2px 2px rgb(232, 232, 232),
+    3px 3px rgb(232, 232, 232),
+    4px 4px rgb(232, 232, 232),
+    5px 5px rgb(232, 232, 232),
+    6px 6px rgb(232, 232, 232),
+    7px 7px rgb(232, 232, 232),
+    8px 8px rgb(232, 232, 232),
+    9px 9px rgb(232, 232, 232),
+    10px 10px rgb(232, 232, 232);
 }
 
 h1 {
@@ -29,14 +71,24 @@ a {
 
 
 .pure_navbar {
+  position: relative;
+  top: -50px;
+  right: 6px;
   display: flex;
   justify-content: center;
   border-radius: 5px;
-  position: static;
   margin-top: 30px;
   height: 60px;
-  width: 1000PX;
+  min-width: 1000PX;
   background-color: #2159B0;
+  box-shadow:
+    1px 1px #133f86,
+    2px 2px #133f86,
+    3px 3px #133f86,
+    4px 4px #133f86,
+    5px 5px #133f86,
+    6px 6px #133f86,
+    7px 7px #133f86;
 }
 
 /* .base_background {
@@ -90,10 +142,17 @@ a {
   text-shadow: 3px 3px rgb(107, 61, 35);
 }
 
-/* hover와 active를 같이 쓸 때는 순서를  hover => active로 맞춰주어야 한다. */
+
 .nav_bar_main_logo_anchor:hover {
-  color: #DA6D49;
+  color: rgb(247, 34, 84);
 }
+
+
+
+/* hover와 active를 같이 쓸 때는 순서를  hover => active로 맞춰주어야 한다. */
+/* .nav_bar_main_logo_anchor:hover {
+  color: #DA6D49;
+} */
 
 .nav_bar_main_logo_anchor:active {
   text-decoration: none;
@@ -135,6 +194,15 @@ a {
 .user_name_text {
   color: #DA6D49;
   text-shadow: 2px 2px rgb(107, 61, 35);
+}
+
+.nav_button_anc_hi {
+  color: #DA6D49;
+  text-decoration: none;
+}
+
+.nav_button_anc_hi:hover {
+  color: rgb(247, 34, 84);
 }
 
 #content {

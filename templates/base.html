@@ -13,15 +13,17 @@
     
     {% endblock style %}
 </head>
-<body>
-<div>
+<body class='d-flex flex-column align-items-center'>
+<div class='base_main'>
 <!-- nav bar 부분-->
 <nav>
   <div class='pure_navbar'>
     <div class='nav_bar_column'>
       {% if request.user.is_authenticated %}
       <div class='nav_button'>
-        <span class='ms-4 user_name_text'>Hi,{{ user.first_name }}!</span> 
+        <span class='ms-4 user_name_text'><a class='nav_button_anc_hi' href='{% url 'accounts:my_page' user.username %}'>Hi,{{ user.first_name }}!</a></span>
+        {% comment %} my_page의 nav버튼에 hi username을 눌렀을 때, mypage로 연결되게 했는데 어떨까요? {% endcomment %}
+        {% comment %} <span class='ms-4 user_name_text'>Hi,{{ user.first_name }}!</span> {% endcomment %}
       </div>
       <div class='nav_button'>  
         <form class='nav_bar_form' class=''  action="{% url 'accounts:logout' %}" method="POST">
@@ -55,12 +57,15 @@
     </div>
 </div>
 </nav>
-<main class="container my-3" id='content'>
-  {% block content %}
 
-  {% endblock content %}
-  </div>
-</main>
+<!--본문-->
+
+  <main class="container my-3" id='content'>
+    {% block content %}
+
+    {% endblock content %}
+  </main>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </body>
 </html>
