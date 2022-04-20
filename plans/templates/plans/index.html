@@ -15,7 +15,14 @@
     {% for plan in plan_cnt %}
     <div class='d-flex justify-content-center my-3 align-items-center'>
       <h2 class='my-3 mx-3 '>
-        <a class='text-decoration-none date_font' href="{% url 'plans:plan_date' plan.date.month plan.date.day %}">{{ plan.date }}</a>
+        <a class='text-decoration-none date_font' href="{% url 'plans:plan_date' plan.date.month plan.date.day %}">
+          {{ plan.date }} 
+          {% for num, str in week_dic.items %}
+            {% if num == plan.date.weekday %}
+              {{ str }}요일
+            {% endif %}
+          {% endfor %}
+          </a>
       </h2> 
       <div class='badge'>
         <a class='text-decoration-none text-white' href="{% url 'plans:plan_date' plan.date.month plan.date.day %}">

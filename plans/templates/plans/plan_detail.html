@@ -67,7 +67,7 @@
     </div>
     {% endfor %}
   </div>
-  {% if request.user.is_authenticated %}
+  {% comment %} {% if request.user.is_authenticated %} {% endcomment %}
     <form action="{% url 'plans:comment_create' plan.pk %}" method="POST">
       {% csrf_token %}
       {{ comment_form.content }}
@@ -75,8 +75,8 @@
         <button class='btn fw-bold' id='submit-btn' type="submit">작성</button>
       </div>
     </form>
-  {% else %}
+  {% comment %} {% else %}
     <a href="{% url 'accounts:login' %}">[댓글을 작성하려면 로그인하세요.]</a>
-  {% endif %}
+  {% endif %} {% endcomment %}
 <a href="{% url 'plans:plan_date' plan.date.month plan.date.day %}"> 뒤로가기 </a>
 {% endblock content %}
