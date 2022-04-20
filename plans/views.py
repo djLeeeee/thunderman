@@ -17,15 +17,17 @@ def index(request):
     enddate = startdate + timedelta(days=interval)
 
     plan_cnt = Plan.objects.filter(date__range=[startdate, enddate]).values('date').annotate(total=Count('date')).order_by('date')
-
+    week_dic = {0: '월', 1: '화', 2: '수', 3: '목', 4: '금', 5: '토', 6: '일'}
     endtime = datetime.now()
     starttime = endtime - timedelta(hours=24)
+
 
     plan_new = Plan.objects.filter(created_at__range=[starttime, endtime]).values_list('date', flat=True)
 
     context = {
         "plan_cnt": plan_cnt,
         "plan_new": plan_new,
+        "week_dic": week_dic,
     }
     return render(request, 'plans/index.html', context)
 
@@ -34,7 +36,8 @@ def plan_date(request, month, day):
     plandate = date(2022, month, day)
     plans = Plan.objects.filter(date=plandate)
     context = {
-        "plans": plans
+        "plans": plans,
+        "plandate": plandate,
     }
     return render(request, 'plans/plan_date.html', context)
 
@@ -89,8 +92,8 @@ def plan_update(request, pk):
     }
     return render(request, 'plans/plan_update.html', context)
 
-
-@require_POST
+@login_required
+@require_http_methods(['GET', 'POST'])
 def comment_create(request, pk):
     if request.user.is_authenticated:
         plan = get_object_or_404(Plan, pk=pk)

@@ -40,7 +40,7 @@ class PlanForm(forms.ModelForm):
     people_limit = forms.IntegerField(
         widget= forms.NumberInput(
             attrs={
-                'placeholder': '몇 명?',
+                'placeholder': '제한이 없을시 0을 입력해주세요',
                 'min': 0,
                 'class': box_class,
             }
@@ -76,11 +76,10 @@ class PlanForm(forms.ModelForm):
 
 class CommentForm(forms.ModelForm):
     large_box_class = 'w-100 my-2'
-    
     content = forms.CharField(
         widget= forms.Textarea(
             attrs={
-                'placeholder': '댓글을 작성해주세요',
+                'placeholder': '로그인 후 댓글을 작성해주세요',
                 'cols': 10,
                 'rows': 4,
                 'class': large_box_class,

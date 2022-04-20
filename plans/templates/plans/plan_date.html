@@ -7,6 +7,7 @@
 
 {% block content %}
 <div class='d-flex flex-column align-items-center'>
+  <h3>{{ plandate }}</h3>
   {% for plan in plans %}
     <a href="{% url 'plans:plan_detail' plan.pk %}" class="text-decoration-none text-center text-black d-flex justify-content-center">
       <div class="alert col-8 round" role="alert" id="date_box">

@@ -42,7 +42,7 @@ def signup(request):
                 except ValueError:
                     pass
             if not flag:
-                errors.append('특수기호는 @ . + - - 만 가능합니다')  
+                errors.append('특수기호는 @ . + - _ 만 가능합니다')  
             
                 
     else:
