@@ -1,6 +1,5 @@
 h1 {
   color: #2159B0;
-  font-family: 'Jua', sans-serif;
 }
 
 
@@ -27,6 +26,7 @@ input::placeholder {
 
 textarea {
   border: 2px solid #2159B0;
+  background-color: rgb(242, 242, 242);
 }
 
 textarea::placeholder {
@@ -35,7 +35,7 @@ textarea::placeholder {
 }
 
 .submit_button {
-  background-color: white;
+  background-color: rgb(242, 242, 242);
   width: 100%;
   color: #2159B0;
   border: solid;

@@ -6,7 +6,7 @@
 {% endblock style %}
 {% block content %}
   <div class='d-flex flex-column justify-content-evenly align-items-center'>
-    <h1 class='my-4'>약속을 잡아봅시다!</h1>
+    <h1 class='mb-4'>약속을 잡아봅시다!</h1>
     <form class='d-flex flex-column justify-content-evenly' action="{% url 'plans:plan_create' %}" method="POST">
       {% csrf_token %}
       <label for="id_title">모임의 이름을 적어주세요</label>

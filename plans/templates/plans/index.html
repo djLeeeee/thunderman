@@ -5,46 +5,47 @@
 <link rel="stylesheet" href="{% static 'plans/index.css' %}?after">
 {% endblock style %}
 {% block content %}
-  <div class='d-flex justify-content-around align-items-center'>
-  </div>
-  <div class="my-3 text-center">
-    {% comment %} <h3 class="fw-bold">&#128521; 현재 당신을 기다리고 있는 약속들 &#128521;</h3> {% endcomment %}
-    <h3 class="fw-bold"><img style='top: 3px; width: 40px; height:40px;' src="{% static 'plans/sunglass.png' %}" alt="선글라스"> 현재 당신을 기다리고 있는 약속들 <img style='top: 3px; width: 40px; height:40px;' src="{% static 'plans/sunglass.png' %}" alt="선글라스"></h3>
-    <p>오늘로부터 30일 이내의 약속만 조회됩니다</p>
-    <a href="{% url 'plans:plan_coming' %}">그 이후의 약속 보기</a>
-  </div>
-  <div class="container">
-    {% for plan in plan_cnt %}
-    <div class='d-flex justify-content-center my-3 align-items-center'>
-      <h2 class='my-3 mx-3 '>
-        <a class='text-decoration-none date_font' href="{% url 'plans:plan_date' plan.date.month plan.date.day %}">
-          {{ plan.date }} 
-          {% for num, str in week_dic.items %}
+<!-- 바로 아래 태그가 전체를 위 아래 중앙 정렬하는 태그이므로 이상하면 없애야 함-->
+  <div class='main_box d-flex flex-column justify-content-center'>
+
+    <div class="my-3 text-center">
+      <h3 class="fw-bold"><img style='top: 3px; width: 40px; height:40px;' src="{% static 'plans/sunglass.png' %}" alt="선글라스"> 현재 당신을 기다리고 있는 약속들 <img style='top: 3px; width: 40px; height:40px;' src="{% static 'plans/sunglass.png' %}" alt="선글라스"></h3>
+      <p>오늘로부터 30일 이내의 약속만 조회됩니다</p>
+    </div>
+    <div class="container d-flex flex-column align-items-center justify-content-evenly">
+      {% for plan in plan_cnt %}
+      <div class='d-flex justify-content-center my-3 align-items-center'>
+        <h2 class='my-1 mx-3 '>
+          <a class='text-decoration-none date_font' href="{% url 'plans:plan_date' plan.date.month plan.date.day %}">
+            {{ plan.date }} 
+            {% for num, str in week_dic.items %}
             {% if num == plan.date.weekday %}
-              {{ str }}요일
+            {{ str }}요일
             {% endif %}
-          {% endfor %}
+            {% endfor %}
           </a>
-      </h2> 
-      <div class='badge'>
-        <a class='text-decoration-none text-white' href="{% url 'plans:plan_date' plan.date.month plan.date.day %}">
-          <h5 class='my-1 mx-1'>{{ plan.total }}개</h5>
-          {% if plan.date in plan_new %}
+        </h2> 
+        <div class='badge'>
+          <a class='text-decoration-none text-white' href="{% url 'plans:plan_date' plan.date.month plan.date.day %}">
+            <h5 class='my-1 mx-1'>{{ plan.total }}개</h5>
+            {% if plan.date in plan_new %}
             <span class="d-flex align-items-center position-absolute top-0 start-100 translate-middle badge rounded-pill badge_mini">
               New
             </span>
-          {% endif %}
-        </a>   
+            {% endif %}
+          </a>   
+        </div>
       </div>
+      {% endfor %}  
+      <a class='mt-3 day_after' href="{% url 'plans:plan_coming' %}">그 이후의 약속 보기</a>
     </div>
-    {% endfor %}  
   </div>
-{% endblock content %}
-
-<!-- 힘들게 만든 + 버튼 -->
-
-{% comment %} <a href="{% url 'plans:plan_create' %}" class="text-decoration-none">
-  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16" id="create_btn">
-    <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
-  </svg>
-</a> {% endcomment %}
+  {% endblock content %}
+  
+  <!-- 힘들게 만든 + 버튼 -->
+  
+  {% comment %} <a href="{% url 'plans:plan_create' %}" class="text-decoration-none">
+    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16" id="create_btn">
+      <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+    </svg>
+  </a> {% endcomment %}
