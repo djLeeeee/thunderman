@@ -1,3 +1,4 @@
+import datetime
 from django import forms
 from .models import Plan, Comment
 
@@ -22,6 +23,7 @@ class PlanForm(forms.ModelForm):
             attrs={
                 'class': box_class,
                 'type': 'date',
+                'value' : datetime.date.today(),
             }
         )
     )
@@ -33,6 +35,7 @@ class PlanForm(forms.ModelForm):
                 'type': 'time',
                 # step은 30분 단위로 설정
                 'step': '1800',
+                'value' : '19:00:00',
             }
         )
     )
