@@ -7,6 +7,9 @@ urlpatterns = [
     # main - 전체 페이지 조회
     path('', views.index, name='index'),
 
+    # 30일 이후의 약속 조회
+    path('coming/', views.plan_coming, name="plan_coming"),
+
     # 해당 날짜의 전체 약속 조회
     path('<int:month>/<int:day>/', views.plan_date, name='plan_date'),
 

@@ -10,6 +10,8 @@
   <div class="my-3 text-center">
     {% comment %} <h3 class="fw-bold">&#128521; 현재 당신을 기다리고 있는 약속들 &#128521;</h3> {% endcomment %}
     <h3 class="fw-bold"><img style='top: 3px; width: 40px; height:40px;' src="{% static 'plans/sunglass.png' %}" alt="선글라스"> 현재 당신을 기다리고 있는 약속들 <img style='top: 3px; width: 40px; height:40px;' src="{% static 'plans/sunglass.png' %}" alt="선글라스"></h3>
+    <p>오늘로부터 30일 이내의 약속만 조회됩니다</p>
+    <a href="{% url 'plans:plan_coming' %}">그 이후의 약속 보기</a>
   </div>
   <div class="container">
     {% for plan in plan_cnt %}

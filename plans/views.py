@@ -134,3 +134,12 @@ def plan_delete(request, pk):
         if request.user == plan.user:
             plan.delete()
     return redirect('plans:index')
+
+
+def plan_coming(request):
+    startdate = date.today() + timedelta(days=31)
+    plans = Plan.objects.filter(date__gte=startdate)
+    context = {
+        'plans': plans,
+    }
+    return render(request, 'plans/plan_coming.html', context)
