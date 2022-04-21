@@ -1,27 +1,42 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+  <link rel="stylesheet" href="{% static 'accounts/my_page.css' %}?after">
+{% endblock style %}
 
 {% block content %}
   <h3>Hi, {{ person.first_name }}!</h3>
-  <div>
-    <h5>내가 작성한 약속</h5>
-    {% for plan in person.plan_set.all %}
-      <a class="text-decoration-none text-black" href="{% url 'plans:plan_detail' plan.pk %}">{{ plan.title }}</a>
-      <br>
-    {% endfor %}
-  </div>
+  <div class="details_box m-5">
+    <details>
+      <summary>내가 작성한 약속</summary>
+      {% for plan in person.plan_set.all %}
+        <a class="m-3 text-decoration-none text-black" href="{% url 'plans:plan_detail' plan.pk %}">{{ plan.title }}</a>
+        <br>
+      {% endfor %}
+    </details>  
 
-  <div>
-    <h5>앞으로 예정된 약속</h5>
-    {% for plan in coming_plans %}
-      <a class="text-decoration-none text-black" href="{% url 'plans:plan_detail' plan.pk %}">{{ plan.title }}</a>
-    {% endfor %}
-  </div>
+    <details>
+      <summary>앞으로 예정된 약속</summary>
+      {% if not comming_plans %}
+        <p>예정된 약속이 없습니다</p>
+      {% endif %}
+      {% for plan in coming_plans %}
+        <a class="text-decoration-none text-black" href="{% url 'plans:plan_detail' plan.pk %}">{{ plan.title }} ({{ plan.date }})</a>
+        <br>      
+      {% endfor %}
+    </details>
 
-  <div>
-    <h5>내가 참석한 약속</h5>
-    {% for plan in passed_plans %}
-      <a class="text-decoration-none text-black" href="{% url 'plans:plan_detail' plan.pk %}">{{ plan.title }}</a>
-    {% endfor %}
+    <details>
+      <summary>내가 참석한 약속</summary>
+      {% if not passed_plans %}
+        <p>참석한 약속이 없습니다</p>
+      {% endif %}
+      {% for plan in passed_plans %}
+        <a class="text-decoration-none text-black" href="{% url 'plans:plan_detail' plan.pk %}">{{ plan.title }} ({{ plan.date }})</a>
+        <br>
+      {% endfor %}
+    </details>  
   </div>
 
 {% endblock content %}

@@ -1,0 +1,23 @@
+details[open] {
+  background-color: rgb(203, 226, 253);
+  border-radius: 10px;
+  padding: 5px;
+  border: 1px solid #2159B0;
+  box-shadow: 2px 2px rgb(168, 168, 168);
+  margin-bottom: 20px;
+}
+
+summary {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 5px;
+  margin-top: 2px;
+}
+
+details[open] summary {
+  text-shadow: 3px 3px #ffffff;
+}
+
+#details_box {
+  margin: 20px;
+}
