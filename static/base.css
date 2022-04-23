@@ -148,12 +148,6 @@ a {
 }
 
 
-
-/* hover와 active를 같이 쓸 때는 순서를  hover => active로 맞춰주어야 한다. */
-/* .nav_bar_main_logo_anchor:hover {
-  color: #DA6D49;
-} */
-
 .nav_bar_main_logo_anchor:active {
   text-decoration: none;
   color: yellow;
