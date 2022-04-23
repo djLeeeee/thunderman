@@ -9,19 +9,29 @@
   <h3>Hi, {{ person.first_name }}!</h3>
   <div class="details_box m-5">
     <details>
-      <summary>내가 작성한 약속</summary>
-      {% for plan in person.plan_set.all %}
-        <a class="d-flex justify-content-start text-decoration-none text-black" href="{% url 'plans:plan_detail' plan.pk %}">
-          <p class="plan_title">{{ plan.title }}</p>
-          <p class="plan_date">({{ plan.date }})</p>
-        </a>   
-      {% endfor %}
+      <summary>
+        <span>내가 작성한 약속</span><span class="num_badge">{{ person.plan_set.all|length }}개</span>   
+      </summary>
+      <div class="container">
+        {% if not person.plan_set.all %}
+          <p class="plan_title">작성한 약속이 없습니다</p>
+        {% endif %}
+        {% for plan in person.plan_set.all %}
+          <a class="plan_box d-flex justify-content-start align-items-center text-decoration-none text-black" href="{% url 'plans:plan_detail' plan.pk %}">
+            <p class="plan_title">{{ plan.title }}</p>
+            <p class="plan_date">({{ plan.date }})</p>
+          </a>   
+        {% endfor %}
+      </div>
     </details>  
 
     <details>
-      <summary>앞으로 예정된 약속</summary>
+      <summary>
+        <span>앞으로 예정된 약속</span><span class="num_badge">{{ coming_plans|length }}개</span>   
+      </summary>
+      <div class="container">
       {% if not coming_plans %}
-        <p>예정된 약속이 없습니다</p>
+        <p class="plan_title">예정된 약속이 없습니다</p>
       {% endif %}
       {% for plan in coming_plans %}
         <a class="d-flex justify-content-start text-decoration-none text-black" href="{% url 'plans:plan_detail' plan.pk %}">
@@ -29,24 +39,24 @@
           <p class="plan_date">({{ plan.date }})</p>
         </a>   
       {% endfor %}
+      </div>
     </details>
 
     <details>
-      <summary style="float-left">
-        <div class="d-flex justify-content-start">
-          <p>내가 참석한 약속</p>
-          <p class="num_badge">{{ passed_plans|length }}개</p>
+        <summary>
+          <span>내가 참석한 약속</span><span class="num_badge">{{ passed_plans|length }}개</span>   
+        </summary>
+      <div class="container">
+        {% if not passed_plans %}
+          <p class="plan_title">참석한 약속이 없습니다</p>
+        {% endif %}
+        {% for plan in passed_plans %}
+          <a class="d-flex justify-content-start text-decoration-none text-black" href="{% url 'plans:plan_detail' plan.pk %}">
+            <p class="plan_title">{{ plan.title }}</p>
+            <p class="plan_date">({{ plan.date }})</p>
+          </a>   
+        {% endfor %}
         </div>
-      </summary>
-      {% if not passed_plans %}
-        <p>참석한 약속이 없습니다</p>
-      {% endif %}
-      {% for plan in passed_plans %}
-        <a class="d-flex justify-content-start text-decoration-none text-black" href="{% url 'plans:plan_detail' plan.pk %}">
-          <p class="plan_title">{{ plan.title }}</p>
-          <p class="plan_date">({{ plan.date }})</p>
-        </a>   
-      {% endfor %}
     </details>  
   </div>
 
