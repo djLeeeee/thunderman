@@ -1,3 +1,9 @@
+h3 {
+  text-shadow: 2px 2px #2159B0;
+  margin-left: 50px;
+}
+
+
 details[open] {
   background-color: white;
   border: 2px solid #2159B0;
@@ -14,18 +20,26 @@ summary {
 
 details[open] summary {
   text-shadow: 1px 1px #2159B0;
-}
-
-#details_box {
-  margin: 20px;
+  margin-bottom: 30px;
 }
 
 .num_badge {
   background-color: #2159B0;
   border-radius: 20%;
   font-size: 15px;
-  margin-left: 10px;
   margin-top: 7px;
   padding: 5px;
   color: white;
+  margin-left: 10px;
+  box-shadow: 2px 2px silver;
+}
+
+.plan_title {
+  font-size: 20px;
+  margin-left: 15px;
+}
+
+.plan_date {
+  margin-top: 8px;
+  color: rgb(82, 82, 82);
 }
