@@ -6,18 +6,44 @@
 {% endblock style %}
 
 {% block content %}
-  <p> 제목: {{ plan.title }} </p>
-  <p> 글쓴이: {{ plan.user.last_name }}{{ plan.user.first_name }}</p>
-  <p> 일시: {{ plan.date }} {{ plan.time }}</p>
-  <p> 장소: {{ plan.place }} </p>
-  <p> 내용: {{ plan.description }} </p>
-  {% if request.user == plan.user %}
-    <a href="{% url 'plans:plan_update' plan.pk %}">수정</a>
-    <form action="{% url 'plans:plan_delete' plan.pk %}" method="POST">
-      {% csrf_token %}
-      <button>삭제</button>
-    </form>
-  {% endif %}
+  <div class="d-flex justify-content-between">
+    <h2>{{ plan.title }}</h2>
+    {% if request.user == plan.user %}
+      <div class="btn-group" style="height: 40px;">
+        <a href="{% url 'plans:plan_update' plan.pk %}" class="btn" id="submit-btn">수정</a>
+        <button type="button" class="btn btn-danger mx-1" data-bs-toggle="modal" data-bs-target="#plandeletealert">삭제</button>
+        <div class="modal fade" id="plandeletealert" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">주의!</h5>
+              </div>
+              <div class="modal-body">
+                {% if plan.join_users.all|length %}
+                  <p class="fw-bold" style="color: red;">현재 참석자가 있습니다!</p>
+                {% endif %}
+                <p>정말 삭제하시겠습니까?</p>
+              </div>
+              <div class="modal-footer">
+                <form action="{% url 'plans:plan_delete' plan.pk %}" method="POST">
+                  {% csrf_token %}
+                  <div class="btn-group" style="height: 40px;">
+                    <button type="submit" class="btn btn-danger">삭제</button>
+                    <button type="button" class="btn btn-secondary mx-1" data-bs-dismiss="modal">취소</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  <p>{{ plan.user.last_name }}{{ plan.user.first_name }}</p>
+  <p>{{ plan.date }} {{ plan.date|date:'D'}} {{ plan.time }}에 {{ plan.place }}에서 만날 사람?</p>
+  <p>{{ plan.description }}</p>
+  <hr>
+
 
   <form action="{% url 'plans:join_users' plan.pk %}" method='POST'>
     {% csrf_token %}
