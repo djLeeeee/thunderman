@@ -1,9 +1,7 @@
 details[open] {
-  background-color: rgb(203, 226, 253);
-  border-radius: 10px;
-  padding: 5px;
-  border: 1px solid #2159B0;
-  box-shadow: 2px 2px rgb(168, 168, 168);
+  background-color: white;
+  border: 2px solid #2159B0;
+  padding: 10px;
   margin-bottom: 20px;
 }
 
@@ -11,13 +9,23 @@ summary {
   font-size: 25px;
   font-weight: bold;
   margin: 5px;
-  margin-top: 2px;
+  margin-top: 10px;
 }
 
 details[open] summary {
-  text-shadow: 3px 3px #ffffff;
+  text-shadow: 1px 1px #2159B0;
 }
 
 #details_box {
   margin: 20px;
+}
+
+.num_badge {
+  background-color: #2159B0;
+  border-radius: 20%;
+  font-size: 15px;
+  margin-left: 10px;
+  margin-top: 7px;
+  padding: 5px;
+  color: white;
 }

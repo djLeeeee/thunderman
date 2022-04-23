@@ -11,30 +11,41 @@
     <details>
       <summary>내가 작성한 약속</summary>
       {% for plan in person.plan_set.all %}
-        <a class="m-3 text-decoration-none text-black" href="{% url 'plans:plan_detail' plan.pk %}">{{ plan.title }}</a>
-        <br>
+        <a class="d-flex justify-content-start text-decoration-none text-black" href="{% url 'plans:plan_detail' plan.pk %}">
+          <p class="plan_title">{{ plan.title }}</p>
+          <p class="plan_date">({{ plan.date }})</p>
+        </a>   
       {% endfor %}
     </details>  
 
     <details>
       <summary>앞으로 예정된 약속</summary>
-      {% if not comming_plans %}
+      {% if not coming_plans %}
         <p>예정된 약속이 없습니다</p>
       {% endif %}
       {% for plan in coming_plans %}
-        <a class="text-decoration-none text-black" href="{% url 'plans:plan_detail' plan.pk %}">{{ plan.title }} ({{ plan.date }})</a>
-        <br>      
+        <a class="d-flex justify-content-start text-decoration-none text-black" href="{% url 'plans:plan_detail' plan.pk %}">
+          <p class="plan_title">{{ plan.title }}</p>
+          <p class="plan_date">({{ plan.date }})</p>
+        </a>   
       {% endfor %}
     </details>
 
     <details>
-      <summary>내가 참석한 약속</summary>
+      <summary style="float-left">
+        <div class="d-flex justify-content-start">
+          <p>내가 참석한 약속</p>
+          <p class="num_badge">{{ passed_plans|length }}개</p>
+        </div>
+      </summary>
       {% if not passed_plans %}
         <p>참석한 약속이 없습니다</p>
       {% endif %}
       {% for plan in passed_plans %}
-        <a class="text-decoration-none text-black" href="{% url 'plans:plan_detail' plan.pk %}">{{ plan.title }} ({{ plan.date }})</a>
-        <br>
+        <a class="d-flex justify-content-start text-decoration-none text-black" href="{% url 'plans:plan_detail' plan.pk %}">
+          <p class="plan_title">{{ plan.title }}</p>
+          <p class="plan_date">({{ plan.date }})</p>
+        </a>   
       {% endfor %}
     </details>  
   </div>
