@@ -17,29 +17,16 @@ import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-import os, json											#json을 읽어오기 위해 json을 추가해 줍니다.
-from django.core.exceptions import ImproperlyConfigured # 예외 처리를 위해 불러와줍니다.
-
-secret_file = os.path.join(BASE_DIR, 'secret.json')
-
-with open(secret_file, 'r') as f:
-    secrets = json.loads(f.read())
-
-def get_secret(setting, secrets=secrets):
-    try:
-        return secrets[setting]
-    except KeyError:
-        error_msg = "Set the {} environment variable".format(setting)
-        raise ImproperlyConfigured(error_msg)
+import os
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_secret("SECRET_KEY")
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'Esth()o&/fl]Q?jm[(opppJ57kgv?d++D)f_E!2b8]<CqY=ZwU')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
 ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
