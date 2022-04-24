@@ -134,3 +134,4 @@ dmypy.json
 /.idea/modules.xml
 /.idea/project1.iml
 /.idea/vcs.xml
+secret.json
