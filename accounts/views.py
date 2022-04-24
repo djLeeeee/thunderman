@@ -82,8 +82,8 @@ def my_page(request, username):
     User = get_user_model()
     person = get_object_or_404(User, username=username)
     today = date.today()
-    coming_plans = person.join_plans.filter(date__gte=today)
-    passed_plans = person.join_plans.filter(date__lt=today)
+    coming_plans = person.join_plans.filter(date__gte=today).order_by('date')
+    passed_plans = person.join_plans.filter(date__lt=today).order_by('date')
     context = {
         'person': person,
         'coming_plans': coming_plans,

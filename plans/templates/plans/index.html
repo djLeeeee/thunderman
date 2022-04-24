@@ -15,32 +15,35 @@
 
     <div class="my-3 text-center">
       <h3 class="fw-bold"><img style='top: 3px; width: 40px; height:40px;' src="{% static 'plans/sunglass.png' %}" alt="선글라스"> 현재 당신을 기다리고 있는 약속들 <img style='top: 3px; width: 40px; height:40px;' src="{% static 'plans/sunglass.png' %}" alt="선글라스"></h3>
-      <p>오늘로부터 30일 이내의 약속만 조회됩니다</p>
+      <p class='mt-3'>오늘로부터 30일 이내의 약속만 조회됩니다</p>
     </div>
     <div class="container d-flex flex-column align-items-center justify-content-evenly mb-5">
       {% for plan in plan_cnt %}
-      <div class='d-flex justify-content-center my-3 align-items-center'>
-        <h2 class='my-1 mx-3 '>
-          <a class='text-decoration-none date_font' href="{% url 'plans:plan_date' plan.date.month plan.date.day %}">
-            {{ plan.date }} {{ plan.date|date:'D'}}
-          </a>
-        </h2> 
-        <div class='badge'>
-          <a class='text-decoration-none text-white' href="{% url 'plans:plan_date' plan.date.month plan.date.day %}">
-            <h5 class='my-1 mx-1'>{{ plan.total }}개</h5>
-            {% if plan.date in plan_new %}
-            <span class="d-flex align-items-center position-absolute top-0 start-100 translate-middle badge rounded-pill badge_mini">
-              New
-            </span>
-            {% endif %}
-          </a>   
+        <div class='d-flex justify-content-center my-3 align-items-center'>
+          <h2 class='my-1 mx-3 '>
+            <a class='text-decoration-none date_font' href="{% url 'plans:plan_date' plan.date.month plan.date.day %}">
+              {{ plan.date }} {{ plan.date|date:'D'}}
+            </a>
+          </h2> 
+          <div class='badge'>
+            <a class='text-decoration-none text-white' href="{% url 'plans:plan_date' plan.date.month plan.date.day %}">
+              <h5 class='my-1 mx-1'>{{ plan.total }}개</h5>
+              {% if plan.date in plan_new %}
+              <span class="d-flex align-items-center position-absolute top-0 start-100 translate-middle badge rounded-pill badge_mini">
+                New
+              </span>
+              {% endif %}
+            </a>   
+          </div>
         </div>
-      </div>
+      {% empty %}
+        <p>30일 내로 예정된 약속이 없습니다!</p>
+        <a class='mt-3 day_after_create' href="{% url 'plans:plan_create' %}">새로운 약속 만들러 가기</a>
       {% endfor %}  
       <a class='mt-3 day_after' href="{% url 'plans:plan_coming' %}">그 이후의 약속 보기</a>
     </div>
   </div>
-  {% endblock content %}
+{% endblock content %}
   
   <!-- 힘들게 만든 + 버튼 -->
   

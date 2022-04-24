@@ -67,6 +67,19 @@ h1 {
   color: rgb(210, 210, 5);
 }
 
+.day_after_create {
+  font-size: x-large;
+  color: #332ab0;
+}
+
+.day_after_create:hover {
+  color: rgb(235, 56, 98);
+}
+
+.day_after_create:active {
+  color: rgb(210, 210, 5);
+}
+
 .main_box {
   min-height: 60vh;
 }
