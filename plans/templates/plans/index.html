@@ -4,6 +4,11 @@
 {% block style %}
 <link rel="stylesheet" href="{% static 'plans/index.css' %}?after">
 {% endblock style %}
+
+{% block back_button %}
+  <a href="#"><i class="fa-solid fa-angle-left ms-3" style="color: white; height: 30px;"></i></a>
+{% endblock back_button %}
+
 {% block content %}
 <!-- 바로 아래 태그가 전체를 위 아래 중앙 정렬하는 태그이므로 이상하면 없애야 함-->
   <div class='main_box d-flex flex-column justify-content-center'>

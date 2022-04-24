@@ -169,6 +169,12 @@ a {
   justify-content: center;
 }
 
+.nav_back_button {
+  min-width: 15%;
+  display: flex;
+  justify-content: center;
+}
+
 
 .nav_button_anc {
   margin-top: 5px;
