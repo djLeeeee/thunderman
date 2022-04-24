@@ -1,0 +1,72 @@
+h1 {
+  color: #2159B0;
+}
+
+#date_box {
+  border-color: #2159B0;
+  border-width: 2.5px;
+  width: 280px;
+  border-radius: 20px;
+}
+
+.date_font {
+  color: black;
+  text-shadow: 2px 2px rgb(107, 61, 35)
+}
+
+.date_font:hover {
+  color: #2159B0;
+}
+
+.date_font:active {
+  color: rgb(228, 228, 3);
+}
+
+.date_font_title {
+  color: black;
+  text-shadow: 1.5px 1.5px gray;
+}
+
+
+
+#create_btn {
+  color: #2159B0;
+}
+
+.badge {
+  top: -2px;
+  position: relative;
+  bottom: 10px;
+  color: white;
+  box-sizing: content-box;
+  padding: 0px;
+  border-radius: 1rem;
+  background-color: #DA6D49;
+  border: 5px solid #DA6D49;
+  text-shadow: 2px 2px rgb(107, 61, 35);
+  box-shadow: 3px 3px rgb(107, 61, 35);
+}
+
+.badge_mini {
+  left: 10px;
+  background-color: #de1122;
+  border: 5px solid #de1122;
+  box-shadow: 2px 2px rgb(107, 61, 35);
+}
+
+.day_after {
+  font-size: x-large;
+  color: #332ab0;
+}
+
+.day_after:hover {
+  color: rgb(235, 56, 98);
+}
+
+.day_after:active {
+  color: rgb(210, 210, 5);
+}
+
+.main_box {
+  min-height: 60vh;
+}
