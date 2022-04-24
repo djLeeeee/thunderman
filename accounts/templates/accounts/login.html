@@ -6,6 +6,10 @@
   <link rel="stylesheet" href="{% static 'accounts/login.css' %}?after">
 {% endblock style %}
 
+{% block back_button %}
+  <a href="{% url 'plans:index' %}"><i class="fa-solid fa-angle-left ms-3" style="color: white; height: 30px;"></i></a>
+{% endblock back_button %}
+
 {% block content %}
 
 <div class='d-flex flex-column justify-content-evenly align-items-center'>
@@ -32,7 +36,6 @@
     </div>
     <input class='t-3 input_button' type="submit" value='입장'>
   </form>
-  <a class='my-3' href="{% url 'plans:index' %}">뒤로가기</a>
 </div>
 
 {% endblock content %}

@@ -19,18 +19,23 @@
 <nav>
   <div class='pure_navbar'>
     <div class='nav_bar_column'>
+      <div class='nav_back_button'>
+        {% block back_button %}
+
+        {% endblock back_button %}
+      </div>
       {% if request.user.is_authenticated %}
-      <div class='nav_button'>
-        <span class='ms-4 user_name_text'><a class='nav_button_anc_hi' href='{% url 'accounts:my_page' user.username %}'>Hi,{{ user.first_name }}!</a></span>
-        {% comment %} my_page의 nav버튼에 hi username을 눌렀을 때, mypage로 연결되게 했는데 어떨까요? {% endcomment %}
-        {% comment %} <span class='ms-4 user_name_text'>Hi,{{ user.first_name }}!</span> {% endcomment %}
-      </div>
-      <div class='nav_button'>  
-        <form class='nav_bar_form' class=''  action="{% url 'accounts:logout' %}" method="POST">
-          {% csrf_token %}
-          <input class='nav_button_anc nav_bar_form' type="submit" name="logout" id="logout" value="Logout">
-        </form>
-      </div>
+        <div class='nav_button'>
+          <span class='ms-4 user_name_text'><a class='nav_button_anc_hi' href='{% url 'accounts:my_page' user.username %}'>Hi,{{ user.first_name }}!</a></span>
+          {% comment %} my_page의 nav버튼에 hi username을 눌렀을 때, mypage로 연결되게 했는데 어떨까요? {% endcomment %}
+          {% comment %} <span class='ms-4 user_name_text'>Hi,{{ user.first_name }}!</span> {% endcomment %}
+        </div>
+        <div class='nav_button'>  
+          <form class='nav_bar_form' class=''  action="{% url 'accounts:logout' %}" method="POST">
+            {% csrf_token %}
+            <input class='nav_button_anc nav_bar_form' type="submit" name="logout" id="logout" value="Logout">
+          </form>
+        </div>
       {% else %}
         <div class='nav_button'>
           <a class='nav_button_anc' href="{% url 'accounts:login' %}">Login</a>
