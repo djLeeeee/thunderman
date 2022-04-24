@@ -70,3 +70,7 @@ h1 {
 .main_box {
   min-height: 60vh;
 }
+
+thead {
+  background-color: #2159B0;
+}

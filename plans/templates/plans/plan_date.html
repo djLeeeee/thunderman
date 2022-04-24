@@ -12,13 +12,35 @@
 {% block content %}
 <div class='d-flex flex-column align-items-center'>
   <h3 class='mb-5'>{{ plandate }}</h3>
-  {% for plan in plans %}
-    <a href="{% url 'plans:plan_detail' plan.pk %}" class="text-decoration-none text-center text-black d-flex justify-content-center">
-      <div class="alert col-8 round" role="alert" id="date_box">
-        <h2 class="date_font_title">{{ plan.title }}</h2>
-        <h6 class="">{{ plan.place }}</h6>
-      </div>
-    </a>   
-  {% endfor %}
+  <table class='table table-hover'>
+    <thead class='text-center text-white'>
+      <tr>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>시간</th>
+        <th>장소</th>
+        <th>참여인원</th>
+      </tr>
+    </thead>
+    <tbody class='text-center'>
+      {% for plan in plans %}
+        <tr>
+          <td>
+            <a href="{% url 'plans:plan_detail' plan.pk %}">{{ plan.title }}</a>
+          </td>
+          <td>{{ plan.user.last_name }}{{ plan.user.first_name }}</td>
+          <td>{{ plan.time }}</td>
+          <td>{{ plan.place }}</td>
+          <td>
+            {% if plan.people_limit == 0 %}
+              {{ plan.join_users.all|length }}명
+            {% else %}
+              {{ plan.join_users.all|length }}명 / {{ plan.people_limit }}명
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
 {% endblock content %}
