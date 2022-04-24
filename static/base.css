@@ -18,8 +18,9 @@ input {
 }
 
 body {
-  min-height: 90vh;
+  min-height: 110vh;
   background-color: #F0E9DE;
+  overflow: auto;
 }
 
 .base_main {
@@ -163,7 +164,7 @@ a {
 /* nav bar의 로그인, 회원가입 버튼들  */
 
 .nav_button {
-  min-width: 120px;
+  min-width: 33%;
   display: flex;
   justify-content: center;
 }

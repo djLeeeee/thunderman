@@ -15,7 +15,7 @@ def index(request):
     startdate = date.today()
     interval = 30
     enddate = startdate + timedelta(days=interval)
-
+    print(startdate)
     plan_cnt = Plan.objects.filter(date__range=[startdate, enddate]).values('date').annotate(total=Count('date')).order_by('date')
     endtime = datetime.now()
     starttime = endtime - timedelta(hours=24)
@@ -25,6 +25,30 @@ def index(request):
         "plan_new": plan_new,
     }
     return render(request, 'plans/index.html', context)
+
+
+def plan_coming(request):
+    # 그 이후의 약속 조회
+    startdate = date.today()
+    interval = 30
+    enddate = startdate + timedelta(days=interval)
+    print(startdate)
+
+    plan_cnt = Plan.objects.filter(date__gt=enddate).values('date').annotate(total=Count('date')).order_by('date')
+    print(plan_cnt)
+    
+    # new 만들려고 한 거니 그대로 가져오면 된다
+    endtime = datetime.now()
+    starttime = endtime - timedelta(hours=24)
+    plan_new = Plan.objects.filter(created_at__range=[starttime, endtime]).values_list('date', flat=True)
+
+    context = {
+        "plan_cnt": plan_cnt,
+        'plan_new': plan_new,
+    }
+
+    return render(request, 'plans/plan_coming.html', context)
+
 
 
 def plan_date(request, month, day):
@@ -58,6 +82,7 @@ def plan_create(request):
             plan = form.save(commit=False)
             plan.user = request.user
             plan.save()
+            plan.join_users.add(request.user)
             return redirect('plans:plan_detail', plan.pk)
     else:
         form = PlanForm()
@@ -130,11 +155,3 @@ def plan_delete(request, pk):
             plan.delete()
     return redirect('plans:index')
 
-
-def plan_coming(request):
-    startdate = date.today() + timedelta(days=31)
-    plans = Plan.objects.filter(date__gte=startdate)
-    context = {
-        'plans': plans,
-    }
-    return render(request, 'plans/plan_coming.html', context)
