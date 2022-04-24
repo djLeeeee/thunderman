@@ -82,6 +82,7 @@ def plan_create(request):
             plan = form.save(commit=False)
             plan.user = request.user
             plan.save()
+            plan.join_users.add(request.user)
             return redirect('plans:plan_detail', plan.pk)
     else:
         form = PlanForm()
