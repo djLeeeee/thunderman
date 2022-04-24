@@ -15,7 +15,6 @@ def index(request):
     startdate = date.today()
     interval = 30
     enddate = startdate + timedelta(days=interval)
-    print(startdate)
     plan_cnt = Plan.objects.filter(date__range=[startdate, enddate]).values('date').annotate(total=Count('date')).order_by('date')
     endtime = datetime.now()
     starttime = endtime - timedelta(hours=24)
