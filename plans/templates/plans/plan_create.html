@@ -4,6 +4,11 @@
 {% block style %}
 <link rel="stylesheet" href="{% static 'plans/plan_create.css' %}?after ">
 {% endblock style %}
+
+{% block back_button %}
+  <a href="{% url 'plans:index' %}"><i class="fa-solid fa-angle-left ms-3" style="color: white; height: 30px;"></i></a>
+{% endblock back_button %}
+
 {% block content %}
   <div class='d-flex flex-column justify-content-evenly align-items-center'>
     <h1 class='mb-4'>약속을 잡아봅시다!</h1>
@@ -24,6 +29,5 @@
 
       <button class="submit_button" type="submit" >제출</button>
     </form>
-    <a href="{% url 'plans:index' %}" class='btn'>뒤로가기</a>
   </div>
 {% endblock content %}
