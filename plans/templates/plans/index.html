@@ -12,12 +12,11 @@
       <h3 class="fw-bold"><img style='top: 3px; width: 40px; height:40px;' src="{% static 'plans/sunglass.png' %}" alt="선글라스"> 현재 당신을 기다리고 있는 약속들 <img style='top: 3px; width: 40px; height:40px;' src="{% static 'plans/sunglass.png' %}" alt="선글라스"></h3>
       <p>오늘로부터 30일 이내의 약속만 조회됩니다</p>
     </div>
-    <div class="container d-flex flex-column align-items-center justify-content-evenly">
+    <div class="container d-flex flex-column align-items-center justify-content-evenly mb-5">
       {% for plan in plan_cnt %}
       <div class='d-flex justify-content-center my-3 align-items-center'>
         <h2 class='my-1 mx-3 '>
           <a class='text-decoration-none date_font' href="{% url 'plans:plan_date' plan.date.month plan.date.day %}">
-            {% comment %} 내가 필터로 할 수 있다고 했자나ㅠㅠ {% endcomment %}
             {{ plan.date }} {{ plan.date|date:'D'}}
           </a>
         </h2> 
