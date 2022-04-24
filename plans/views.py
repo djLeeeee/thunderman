@@ -32,10 +32,8 @@ def plan_coming(request):
     startdate = date.today()
     interval = 30
     enddate = startdate + timedelta(days=interval)
-    print(startdate)
 
     plan_cnt = Plan.objects.filter(date__gt=enddate).values('date').annotate(total=Count('date')).order_by('date')
-    print(plan_cnt)
     
     # new 만들려고 한 거니 그대로 가져오면 된다
     endtime = datetime.now()
