@@ -1,1 +1,1 @@
-web: gunicorn meeting --log-file -
+web: gunicorn meeting.wsgi --log-file -
