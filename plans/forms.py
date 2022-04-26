@@ -82,7 +82,7 @@ class CommentForm(forms.ModelForm):
     content = forms.CharField(
         widget= forms.Textarea(
             attrs={
-                'placeholder': '로그인 후 댓글을 작성해주세요',
+                'placeholder': '댓글을 작성해주세요',
                 'cols': 10,
                 'rows': 4,
                 'class': large_box_class,
