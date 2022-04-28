@@ -27,3 +27,12 @@ textarea::placeholder {
   color: gray;
   opacity: 0.8;
 }
+
+.comment_hr {
+  color: grey;
+  height: 0.05rem;
+}
+
+.comment_name {
+  min-width: 50px;
+}
