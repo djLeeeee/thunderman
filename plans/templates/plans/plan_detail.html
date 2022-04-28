@@ -87,7 +87,7 @@
   <!--댓글 표시 부분 -->
   <div class="collapse mt-3" id="collapsecomments">
     {% for comment in comments %}
-    <div class='d-flex justify-content align-items-center mx-2 my-2'>
+    <div class='d-flex justify-content align-items-center mx-2 comment'>
         <p class='fw-bold m-0 d-flex flex-column justify-content-center comment_name'>{{ comment.user.first_name }}: </p> <p class='m-0'>{{ comment.content }}</p>
         {% if request.user == comment.user %}
         <form action="{% url 'plans:comment_delete' plan.pk comment.pk %}" method="POST">

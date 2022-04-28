@@ -33,6 +33,11 @@ textarea::placeholder {
   height: 0.05rem;
 }
 
+.comment {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
 .comment_name {
   min-width: 50px;
 }
