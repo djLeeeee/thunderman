@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block style %}
-<link rel="stylesheet" href="{% static 'plans/plan_detail.css' %}">
+<link rel="stylesheet" href="{% static 'plans/plan_detail.css' %}?{% now "U" %}">
 {% endblock style %}
 
 {% block back_button %}
@@ -84,19 +84,25 @@
     </div>
   </div>
 
+  <!--댓글 표시 부분 -->
   <div class="collapse mt-3" id="collapsecomments">
     {% for comment in comments %}
-    <div class='d-flex justify-content align-items-center mx-2'>
-        <p class='fw-bold m-0'>{{ comment.user.first_name }} </p> <p class='m-0'>: {{ comment.content }}</p>
+    <div class='d-flex justify-content align-items-center mx-2 comment'>
+        <p class='fw-bold m-0 d-flex flex-column justify-content-center comment_name'>{{ comment.user.first_name }}: </p> <p class='m-0'>{{ comment.content }}</p>
         {% if request.user == comment.user %}
-          <form action="{% url 'plans:comment_delete' plan.pk comment.pk %}" method="POST">
-            {% csrf_token %}
-            <button type="submit" class='btn py-0'><i class="fa-solid fa-xmark"></i></button>
-          </form>
+        <form action="{% url 'plans:comment_delete' plan.pk comment.pk %}" method="POST">
+          {% csrf_token %}
+          <button type="submit" class='btn py-0'><i class="fa-solid fa-xmark"></i></button>
+        </form>
         {% endif %}
-    </div>
+      </div>
+      {% if not forloop.last %}
+        <hr class='my-0 comment_hr'>
+      {% else %}
+      {% endif %}
     {% endfor %}
   </div>
+
   {% comment %} {% if request.user.is_authenticated %} {% endcomment %}
     <form action="{% url 'plans:comment_create' plan.pk %}" method="POST">
       {% csrf_token %}
