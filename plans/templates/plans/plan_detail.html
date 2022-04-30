@@ -45,7 +45,7 @@
   </div>
   <p>{{ plan.user.last_name }}{{ plan.user.first_name }}</p>
   <p>{{ plan.date }} {{ plan.date|date:'D'}} {{ plan.time }}에 {{ plan.place }}에서 만날 사람?</p>
-  <p>{{ plan.description }}</p>
+  <p>{{ plan.description|linebreaksbr }}</p>
   <hr>
 
 
