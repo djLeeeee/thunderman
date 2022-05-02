@@ -24,27 +24,21 @@ def signup(request):
             username = request.POST.get('username')
             password1 = request.POST.get('password1')
             password2 = request.POST.get('password2')
-            flag = False
+            
             if get_user_model().objects.filter(username=username).exists():
                 errors.append('중복된 아이디가 있습니다')
-                flag = True
+            
             elif password1 != password2:
                 errors.append('비밀번호 확인이 틀렸습니다')
-                flag = True
+            
             elif len(password1) < 8:
                 errors.append('8자 이상의 비밀번호를 입력해주세요')
-                flag = True 
-            else:
-                try:
-                    _= int(password1) 
-                    errors.append('숫자와 문자를 함께 입력해주세요')
-                    flag = True
-                except ValueError:
-                    pass
-            if not flag:
-                errors.append('특수기호는 @ . + - _ 만 가능합니다')  
             
-                
+            elif password1.isdigit() or password1.isalpha():
+                errors.append('숫자와 문자를 함께 입력해주세요')
+            
+            else:
+                errors.append('특수기호는 @ . + - _ 만 가능합니다')
     else:
         form = CustomUserCreationForm()
     context = {

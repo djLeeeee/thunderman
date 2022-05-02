@@ -35,3 +35,8 @@ input::placeholder {
   color: #DA6D49;
 
 }
+
+.error_message {
+  display: flex;
+  justify-content: center;
+}
