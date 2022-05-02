@@ -3,7 +3,7 @@
 
 {% block style %}
   
-  <link rel="stylesheet" href="{% static 'accounts/signup.css' %}?after">
+  <link rel="stylesheet" href="{% static 'accounts/signup.css' %}?{% now 'U'%}">
 
 {% endblock style %}
 
@@ -47,7 +47,7 @@
       <p>
         {{ form.first_name }}
       {% for error in errors %}
-        <p style='color: rgb(209, 51, 0);'><img style='width:30px; height:30px;' src="{% static 'accounts/my_image.png' %}" alt="사진사진">{{ error }}</p>
+        <p class='error_message' style='color: rgb(209, 51, 0);'><img style='width:30px; height:30px;' src="{% static 'accounts/my_image.png' %}" alt="사진사진">{{ error }}</p>
       {% endfor %}
       </p>
       <input class='input_button' type="submit" value="작성">
