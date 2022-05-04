@@ -11,6 +11,20 @@
 
 {% block content %}
   <h3>Hi, {{ person.first_name }}!</h3>
+  {% if today_plans %}
+    <h5>오늘 예정된 약속</h5>
+      {% for plan in today_plans %}
+        <a class="plan_box d-flex justify-content-start align-items-center text-decoration-none text-black" href="{% url 'plans:plan_detail' plan.pk %}">  
+          <p>{{ plan.title }}</p>
+          <p>{{ plan.time }}</p>
+        </a>
+      {% endfor %}
+      <h5>약속까지 남은 시간</h5>
+      <input type="hidden" id="first-time" value="{{ first_plan.time }}">
+      <div class="time-count"></div>
+  {% else %}
+    <p>오늘 예정된 약속이 없습니다!</p>
+  {% endif %}
   <div class="details_box m-5">
     <details>
       <summary>
@@ -65,6 +79,39 @@
   </div>
 
 {% endblock content %}
-ç
+
+{% block script %}
+  <script>
+    const timeDiv = document.querySelector('.time-count')
+    const firstPlanTime = transTime(document.querySelector('#first-time').value)
+    function transTime (timestr) {
+      const splitTime = timestr.split(' ')
+      let result = (splitTime[0] === '오전') ? 0 : 720
+      const clockTime = splitTime[1].split(':').map(Number)
+      return result + clockTime[0] * 60 + clockTime[1]
+    }
+    
+    function transStr (time) {
+    return `${parseInt(time / 60)}시간 ${time % 60}분`
+    }
+
+    const timeCount = function () {
+      const now = new Date()
+      const nowHour = now.getHours()
+      const nowMin = now.getMinutes()
+      const nowTime = nowHour * 60 + nowMin
+
+      const leftTime = firstPlanTime - nowTime
+      timeDiv.innerText = transStr(leftTime)
+    }
+
+    setInterval(timeCount, 1000)
+
+  </script>
+{% endblock script %}
+
+
+
+
 
 

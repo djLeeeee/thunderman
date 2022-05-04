@@ -7,6 +7,8 @@ from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import get_user_model
 from datetime import date
+from django.utils import timezone
+from django.db.models import Q
 
 
 @require_http_methods(["POST", "GET"])
@@ -76,11 +78,19 @@ def my_page(request, username):
     User = get_user_model()
     person = get_object_or_404(User, username=username)
     today = date.today()
-    coming_plans = person.join_plans.filter(date__gte=today).order_by('date')
-    passed_plans = person.join_plans.filter(date__lt=today).order_by('date')
+    nowtime = timezone.now()
+    coming_plans = person.join_plans.filter(date__gte=today, time__gte=nowtime).order_by('date', 'time')
+    passed_plans = person.join_plans.filter(Q(date__lt=today) |Q(date=today, time__lt=nowtime)).order_by('date')
+
+    today_plans = coming_plans.filter(date = today)
+    first_plan = ''
+    if today_plans:
+        first_plan = today_plans[0]
     context = {
         'person': person,
         'coming_plans': coming_plans,
         'passed_plans': passed_plans,
+        'today_plans': today_plans,
+        'first_plan': first_plan,
     }
     return render(request, 'accounts/my_page.html', context)
