@@ -11,21 +11,31 @@
 
 {% block content %}
   <h3>Hi, {{ person.first_name }}!</h3>
-  {% if today_plans %}
-    <h5>오늘 예정된 약속</h5>
-      {% for plan in today_plans %}
-        <a class="plan_box d-flex justify-content-start align-items-center text-decoration-none text-black" href="{% url 'plans:plan_detail' plan.pk %}">  
-          <p>{{ plan.title }}</p>
-          <p>{{ plan.time }}</p>
-        </a>
-      {% endfor %}
-      <h5>약속까지 남은 시간</h5>
-      <input type="hidden" id="first-time" value="{{ first_plan.time }}">
-      <div class="time-count"></div>
-  {% else %}
-    <p>오늘 예정된 약속이 없습니다!</p>
-  {% endif %}
-  <div class="details_box m-5">
+  <div class='details_box m-5'>
+    <details>
+      <summary>
+      <span>오늘 예정된 약속</span><span class="num_badge">{{ today_plans|length }}개</span>
+      </summary>
+      <div class="container">
+        {% if today_plans %}
+          <input type="hidden" id="first-time" value="{{ first_plan.time }}">
+          <div class="left-time">
+            <span>약속까지 남은 시간</span>
+            <span class="time-count"></span>
+          </div>  
+          {% for plan in today_plans %}
+            <a class="plan_box d-flex justify-content-start align-items-center text-decoration-none text-black" href="{% url 'plans:plan_detail' plan.pk %}">  
+              <p class="plan_title">{{ plan.title }}</p>
+              <p class="plan_date">({{ plan.time }})</p>
+            </a>
+        {% endfor %}
+ 
+        {% else %}
+          <p>오늘 예정된 약속이 없습니다!</p>
+        {% endif %}
+      </div>
+    </details>
+
     <details>
       <summary>
         <span>내가 작성한 약속</span><span class="num_badge">{{ person.plan_set.all|length }}개</span>   
