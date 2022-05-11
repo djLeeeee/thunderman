@@ -43,3 +43,10 @@ details[open] summary {
   margin-top: 8px;
   color: rgb(82, 82, 82);
 }
+
+.left-time {
+  font-size: 25px;
+  margin-left: 15px;
+  text-shadow: 1px 1px #b3b3b3;
+  margin-bottom: 20px;
+}
