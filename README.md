@@ -1,21 +1,23 @@
-![Animation](README.assets/Animation.gif)
+<div align='center'>
+    <img src="README.assets/Animation.gif">
+</div>
 
 
-
-<center>
+<div align='center'>
   <h1>
     THUNDERMAN
   </h1>
-</center>
-<center>
+</div>
+<div align='center'>
   <strong>
     SSAFY 7기 서울 3반 공식 번개 서비스
   </strong>
-</center>
-<center><strong><a href='https://thunderman.herokuapp.com/' style='text-decoration: none; color: #2159B0;'>페이지 방문하기</a></strong></center>
-
-<div style='display:flex; justify-content: center;'>
-        <img alt="Python" src ="https://img.shields.io/badge/Python-FFE15F.svg?&style=for-the-badge&logo=Python&logoColor=3776AB"/>
+</div>
+<br>
+<div align='center'><strong><a href='https://thunderman.herokuapp.com/' style='text-decoration: none; color: #2159B0;'>페이지 방문하기</a></strong></div>
+<br>
+<div align='center'>
+     <img alt="Python" src ="https://img.shields.io/badge/Python-FFE15F.svg?&style=for-the-badge&logo=Python&logoColor=3776AB"/>
     <img alt="Django" src ="https://img.shields.io/badge/Django-092E20.svg?&style=for-the-badge&logo=Django&logoColor=white"/>
     <img alt="Heroku" src ="https://img.shields.io/badge/Heroku-430098.svg?&style=for-the-badge&logo=Heroku&logoColor=white"/>
 </div>
@@ -23,7 +25,7 @@
 
 ---
 
-<p style='display: flex; justify-content: center;'>
+<div align='center'>
   <div style='display: flex; justify-content: center;'>
      <h3>
        Contents  
@@ -31,25 +33,25 @@
   </div>
   <div style='display: flex; flex-direction: column; justify-content: center; align-items: center; '>
    	<div>
-        <h5 style='margin: 0 0 0 0;'>
+        <h4>
           <a style="text-decoration: none; color: #2159B0;" href="#개요">개요</a>
-        </h5>
+        </h4>
     </div>
     <div>
-      <h5>
-        <a style="text-decoration: none; color: #2159B0;" href="#서비스 소개">서비스 소개</a> 
-      </h5>
+      <h4>
+        <a style="text-decoration: none; color: #2159B0;" href="#서비스-소개">서비스 소개</a> 
+      </h4>
     </div>
-    <div style='display: flex; justify-content: center;'>
+    <div align='center'>
       <strong>
-        <a style="text-decoration: none; color: #2159B0;" href="#메인 페이지">메인 페이지</a> |
-        <a style="text-decoration: none; color: #2159B0;" href="#날짜별 페이지">날짜별 페이지</a> |
-        <a style="text-decoration: none; color: #2159B0;" href="#약속 상세 페이지">약속 상세 페이지</a> |
-        <a style="text-decoration: none; color: #2159B0;" href="#마이 페이지">마이 페이지</a>
+        <a style="text-decoration: none; color: #2159B0;" href="#메인-페이지">메인 페이지</a> |
+        <a style="text-decoration: none; color: #2159B0;" href="#날짜별-페이지">날짜별 페이지</a> |
+        <a style="text-decoration: none; color: #2159B0;" href="#약속-상세-페이지">약속 상세 페이지</a> |
+        <a style="text-decoration: none; color: #2159B0;" href="#마이-페이지">마이 페이지</a>
       </strong>
     </div>
   </div>
-</p>
+</div>
 
 
 
@@ -74,7 +76,7 @@
 
 ## 서비스 소개
 
-### :house: 메인 페이지
+### 메인 페이지
 
 ---
 
@@ -85,7 +87,7 @@
 
 
 
-### :date: 날짜별 페이지
+### 날짜별 페이지
 
 ---
 
@@ -96,7 +98,7 @@
 
 
 
-### :book: 약속 상세 페이지
+### 약속 상세 페이지
 
 ---
 
@@ -109,7 +111,7 @@
 
 
 
-### :hammer: 마이 페이지
+### 마이 페이지
 
 ---
 
