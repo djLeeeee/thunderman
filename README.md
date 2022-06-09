@@ -14,7 +14,7 @@
   </strong>
 </div>
 <br>
-<div align='center'><strong><a href='https://thunderman.herokuapp.com/' style='text-decoration: none; color: #2159B0;'>페이지 방문하기</a></strong></div>
+<div align='center'><strong><a href='https://thunderman.herokuapp.com/' target='_blank' style='text-decoration: none; color: #2159B0;'>페이지 방문하기</a></strong></div>
 <br>
 <div align='center'>
      <img alt="Python" src ="https://img.shields.io/badge/Python-FFE15F.svg?&style=for-the-badge&logo=Python&logoColor=3776AB"/>
