@@ -79,10 +79,11 @@ def my_page(request, username):
     person = get_object_or_404(User, username=username)
     today = date.today()
     nowtime = timezone.now()
-    coming_plans = person.join_plans.filter(date__gte=today, time__gte=nowtime).order_by('date', 'time')
+    
+    coming_plans = person.join_plans.filter(Q(date__gt=today) | Q(time__gte=nowtime, date=today)).order_by('date', 'time')
     passed_plans = person.join_plans.filter(Q(date__lt=today) |Q(date=today, time__lt=nowtime)).order_by('date')
-
     today_plans = coming_plans.filter(date = today)
+
     first_plan = ''
     if today_plans:
         first_plan = today_plans[0]
